@@ -181,7 +181,6 @@ export default function KnowledgePage() {
       <Dialog open={createOpen} onClose={() => setCreateOpen(false)}>
         <DialogTitle>
           {editId ? "Edit Knowledge" : "Create Knowledge"}
-          Knowledge
         </DialogTitle>
         <DialogContent>
           <Grid container spacing={0}>
