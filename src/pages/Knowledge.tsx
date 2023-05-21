@@ -39,14 +39,26 @@ export default function KnowledgePage() {
   const columns: GridColDef[] = [
     { field: "title", headerName: "Title", width: 200 },
     {
-      field: "tags",
-      headerName: "Tags",
+      field: "image",
+      headerName: "Image",
       width: 200,
       renderCell: (params) => {
-        return (params.row.tags as string[]).map((tag) => {
-          return <Card sx={{ p: 1, m: 0.5 }}>{tag}</Card>;
-        });
+        return (
+          <img
+            src={
+              "https://storage.googleapis.com/agronify_bucket/" +
+              params.row.image
+            }
+            alt="image"
+            className="h-full w-full object-cover"
+          />
+        );
       },
+    },
+    {
+      field: "content",
+      headerName: "Content",
+      width: 200,
     },
     {
       field: "id",
@@ -55,15 +67,6 @@ export default function KnowledgePage() {
       renderCell: (params) => {
         return (
           <>
-            <Button
-              variant="contained"
-              sx={{ m: 0.5 }}
-              onClick={() => {
-                console.log("params", params);
-              }}
-            >
-              <VisibilityIcon />
-            </Button>
             <Button
               variant="contained"
               sx={{ m: 0.5 }}
@@ -171,8 +174,10 @@ export default function KnowledgePage() {
                 },
               }}
               loading={ksLoading}
+              autoHeight
               pageSizeOptions={[5, 10]}
               rowSelection={false}
+              getRowHeight={(params) => "auto"}
             />
           </Card>
         </Grid>
