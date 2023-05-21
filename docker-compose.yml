@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  agronify_panel:
+    platform: linux/x86_64
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 20081:3000
+    working_dir: /app
+    volumes:
+      - ./:/app
+    restart: always
+    command: 
+     - bash
+     - -ec
+     - |
+       yarn install
+       vite build
+       serve -s dist
