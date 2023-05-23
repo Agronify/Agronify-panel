@@ -215,7 +215,7 @@ function DashboardBase(props: DashboardBaseProps) {
             </ListItemIcon>
             <ListItemText primary="Knowledge Data" />
           </ListItemButton>
-          <ListItemButton component="a" href="/dashboard">
+          <ListItemButton component="a" href="/crop">
             <ListItemIcon>
               <svg
                 width="30"

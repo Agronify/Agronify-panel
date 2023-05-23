@@ -23,3 +23,12 @@ export interface UploadResp {
   url: string;
   path: string;
 }
+
+export interface Crop {
+  id?: number;
+  name: string;
+  image: string;
+  description: string;
+  type: string;
+  is_fruit: boolean;
+}

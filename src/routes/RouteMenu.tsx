@@ -4,6 +4,7 @@ import PrivateRoute from "./PrivateRoute";
 import LoginPage from "../pages/auth/Login";
 import DashboardPage from "../pages/Dashboard";
 import KnowledgePage from "../pages/Knowledge";
+import CropPage from "../pages/Crop";
 interface RouteInterface {
   title: string;
   path: string;
@@ -20,6 +21,12 @@ export const routes: RouteInterface[] = [
     guard: true,
     path: "/knowledge",
     component: KnowledgePage,
+  },
+  {
+    title: "Crop Data",
+    guard: true,
+    path: "/crop",
+    component: CropPage,
   },
   {
     title: "Not Found",

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Knowledge, UploadResp, User } from "./types";
+import { Crop, Knowledge, UploadResp, User } from "./types";
 
 export const api = createApi({
   reducerPath: "api",
@@ -7,7 +7,7 @@ export const api = createApi({
     baseUrl: import.meta.env.VITE_API_URL,
     credentials: "include",
   }),
-  tagTypes: ["Knowledge", "Messages"],
+  tagTypes: ["Knowledge", "Crop"],
   endpoints: (builder) => ({
     authCheck: builder.query<User | null, void>({
       query: () => `/auth/check`,
@@ -68,6 +68,21 @@ export const api = createApi({
       }),
       invalidatesTags: (result, error, id) => [{ type: "Knowledge", id }],
     }),
+
+    getCrops: builder.query<Crop[], void>({
+      query: () => "/crops",
+      providesTags: (result) =>
+        result
+          ? [
+              ...result.map(({ id }) => ({ type: "Crop", id } as const)),
+              {
+                type: "Crop",
+                id: "LIST",
+              },
+            ]
+          : [{ type: "Crop", id: "LIST" }],
+    }),
+
     uploadFile: builder.mutation<UploadResp, { file: File; type: string }>({
       query: (params) => ({
         url: `/upload`,
@@ -96,4 +111,5 @@ export const {
   useCreateKnowledgeMutation,
   useUpdateKnowledgeMutation,
   useDeleteKnowledgeMutation,
+  useGetCropsQuery,
 } = api;
