@@ -82,6 +82,36 @@ export const api = createApi({
             ]
           : [{ type: "Crop", id: "LIST" }],
     }),
+    getCrop: builder.query<Crop, number>({
+      query: (id) => `/crops/${id}`,
+      providesTags: (result, error, id) => [{ type: "Crop", id }],
+    }),
+    createCrop: builder.mutation<Crop, Crop>({
+      query: (crop) => ({
+        url: `/crops`,
+        method: "POST",
+        body: crop,
+      }),
+      invalidatesTags: [{ type: "Crop", id: "LIST" }],
+    }),
+    updateCrop: builder.mutation<Crop, Crop>({
+      query: (crop) => ({
+        url: `/crops/${crop.id}`,
+        method: "PUT",
+        body: crop,
+      }),
+      invalidatesTags: (result, error, crop) => [
+        { type: "Crop", id: crop.id },
+        { type: "Crop", id: "LIST" },
+      ],
+    }),
+    deleteCrop: builder.mutation<void, number>({
+      query: (id) => ({
+        url: `/crops/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: (result, error, id) => [{ type: "Crop", id }],
+    }),
 
     uploadFile: builder.mutation<UploadResp, { file: File; type: string }>({
       query: (params) => ({
@@ -112,4 +142,8 @@ export const {
   useUpdateKnowledgeMutation,
   useDeleteKnowledgeMutation,
   useGetCropsQuery,
+  useGetCropQuery,
+  useCreateCropMutation,
+  useUpdateCropMutation,
+  useDeleteCropMutation,
 } = api;
