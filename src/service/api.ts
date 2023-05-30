@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Crop, Knowledge, UploadResp, User } from "./types";
+import axios, { AxiosError, AxiosResponse } from "axios";
+import { setUploadProgress } from "../slices/global";
 
 export const api = createApi({
   reducerPath: "api",
@@ -114,11 +116,38 @@ export const api = createApi({
     }),
 
     uploadFile: builder.mutation<UploadResp, { file: File; type: string }>({
-      query: (params) => ({
-        url: `/upload`,
-        method: "POST",
-        body: createMultipartFormData(params),
-      }),
+      // query: (params) => ({
+      //   url: `/upload`,
+      //   method: "POST",
+      //   body: createMultipartFormData(params),
+      // }),
+      //@ts-ignore
+      queryFn: async (params, api) => {
+        try {
+          const formData = createMultipartFormData(params);
+          const instance = axios.create({
+            baseURL: api.endpoint,
+            withCredentials: true,
+          });
+          const result: AxiosResponse<UploadResp> = await instance.post(
+            "/upload",
+            formData,
+            {
+              onUploadProgress: (progressEvent) => {
+                let uploadloadProgress = Math.round(
+                  (100 * progressEvent.loaded) / progressEvent?.total!
+                );
+                api.dispatch(setUploadProgress(uploadloadProgress));
+                return result.data;
+              },
+            }
+          );
+        } catch (error: any) {
+          return {
+            error: error as AxiosError,
+          };
+        }
+      },
     }),
   }),
 });
