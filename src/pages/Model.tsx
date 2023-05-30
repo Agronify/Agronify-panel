@@ -167,20 +167,24 @@ export default function ModelPage() {
   };
 
   const classColumns: GridColDef[] = [
-    { field: "index", headerName: "Output Index", width: 100 },
+    { field: "index", headerName: "Output Index", width: 100, align: "center" },
     {
       field: "disease",
       headerName: "Disease",
       width: 200,
       renderCell: (params) => {
         return (
-          <Select
-            value={(params.row.disease as any).id || 0}
-            onChange={(e) => {}}
-          >
+          <Select fullWidth onChange={(e) => {}}>
             <MenuItem value={0}>Healthy</MenuItem>
             {diseasesData?.map((disease) => {
-              return <MenuItem value={disease.id}>{disease.name}</MenuItem>;
+              return (
+                <MenuItem
+                  value={disease.id}
+                  selected={disease.id === (params.row.disease as any).id}
+                >
+                  {disease.name}
+                </MenuItem>
+              );
             })}
           </Select>
         );
@@ -231,6 +235,7 @@ export default function ModelPage() {
               onRowSelectionModelChange={async (e) => {
                 if (e.length > 0) {
                   await getModelClasses(e[0] as number).unwrap();
+                  await loadDiseases(e[0] as number).unwrap();
                 }
               }}
               getRowHeight={(params) => "auto"}
@@ -254,19 +259,24 @@ export default function ModelPage() {
             </Grid>
             <DataGrid
               rows={selectedModelClasses || []}
-              columns={columns}
+              columns={classColumns}
               loading={selectedMCLoading}
               autoHeight
               getRowHeight={(params) => "auto"}
+              rowSelection={false}
+              pagination={undefined}
+              hideFooter
+              sortingOrder={["asc"]}
+              disableColumnSelector
+              disableColumnFilter
+              disableColumnMenu
             />
           </Card>
         </Grid>
       </Grid>
 
       <Dialog open={createOpen} onClose={() => setCreateOpen(false)}>
-        <DialogTitle>
-          {editId ? "Edit Knowledge" : "Create Knowledge"}
-        </DialogTitle>
+        <DialogTitle>{editId ? "Edit Model" : "Create Model"}</DialogTitle>
         <DialogContent>
           <Grid container spacing={1}>
             <Grid item xs={12} md={12} lg={12}>
@@ -319,7 +329,7 @@ export default function ModelPage() {
               >
                 <option value={0}>Select Type</option>
                 <option value="disease">Disease</option>
-                <option value="ripeness">Pest</option>
+                <option value="ripeness">Ripeness</option>
               </Select>
             </Grid>
             <Grid item xs={12} md={12} lg={12}>
