@@ -31,4 +31,38 @@ export interface Crop {
   description: string;
   type: string;
   is_fruit: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface CropDisease {
+  id?: number;
+  crop_id: number;
+  image?: string;
+  name: string;
+  description: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface Model {
+  id?: number;
+  crop_id: number;
+  name: string;
+  type: string;
+  file?: string;
+  active: boolean;
+  inputWidth?: number;
+  inputHeight?: number;
+  classAmount?: number;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface ModelClass {
+  id?: number;
+  model_id: number;
+  disease_id: number;
+  disease: CropDisease;
+  index: number;
 }

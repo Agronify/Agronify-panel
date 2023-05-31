@@ -252,7 +252,7 @@ function DashboardBase(props: DashboardBaseProps) {
             </ListItemIcon>
             <ListItemText primary="Crop Data" />
           </ListItemButton>
-          <ListItemButton component="a" href="/dashboard">
+          <ListItemButton component="a" href="/model">
             <ListItemIcon></ListItemIcon>
             <ListItemText primary="ML Models" />
           </ListItemButton>

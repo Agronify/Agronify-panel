@@ -5,6 +5,7 @@ import LoginPage from "../pages/auth/Login";
 import DashboardPage from "../pages/Dashboard";
 import KnowledgePage from "../pages/Knowledge";
 import CropPage from "../pages/Crop";
+import ModelPage from "../pages/Model";
 interface RouteInterface {
   title: string;
   path: string;
@@ -27,6 +28,12 @@ export const routes: RouteInterface[] = [
     guard: true,
     path: "/crop",
     component: CropPage,
+  },
+  {
+    title: "Machine Learning Model",
+    guard: true,
+    path: "/model",
+    component: ModelPage,
   },
   {
     title: "Not Found",
