@@ -1,4 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import axios, { AxiosError, AxiosResponse } from "axios";
+import { setUploadProgress } from "../slices/global";
 import { Crop, Knowledge, Model, ModelClass, UploadResp, User } from "./types";
 
 export const api = createApi({
@@ -81,6 +83,36 @@ export const api = createApi({
               },
             ]
           : [{ type: "Crop", id: "LIST" }],
+    }),
+    getCrop: builder.query<Crop, number>({
+      query: (id) => `/crops/${id}`,
+      providesTags: (result, error, id) => [{ type: "Crop", id }],
+    }),
+    createCrop: builder.mutation<Crop, Crop>({
+      query: (crop) => ({
+        url: `/crops`,
+        method: "POST",
+        body: crop,
+      }),
+      invalidatesTags: [{ type: "Crop", id: "LIST" }],
+    }),
+    updateCrop: builder.mutation<Crop, Crop>({
+      query: (crop) => ({
+        url: `/crops/${crop.id}`,
+        method: "PUT",
+        body: crop,
+      }),
+      invalidatesTags: (result, error, crop) => [
+        { type: "Crop", id: crop.id },
+        { type: "Crop", id: "LIST" },
+      ],
+    }),
+    deleteCrop: builder.mutation<void, number>({
+      query: (id) => ({
+        url: `/crops/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: (result, error, id) => [{ type: "Crop", id }],
     }),
 
     getDiseases: builder.query<Crop[], number>({
@@ -189,11 +221,38 @@ export const api = createApi({
     }),
 
     uploadFile: builder.mutation<UploadResp, { file: File; type: string }>({
-      query: (params) => ({
-        url: `/upload`,
-        method: "POST",
-        body: createMultipartFormData(params),
-      }),
+      // query: (params) => ({
+      //   url: `/upload`,
+      //   method: "POST",
+      //   body: createMultipartFormData(params),
+      // }),
+      //@ts-ignore
+      queryFn: async (params, api) => {
+        try {
+          const formData = createMultipartFormData(params);
+          const instance = axios.create({
+            baseURL: api.endpoint,
+            withCredentials: true,
+          });
+          const result: AxiosResponse<UploadResp> = await instance.post(
+            "/upload",
+            formData,
+            {
+              onUploadProgress: (progressEvent) => {
+                let uploadloadProgress = Math.round(
+                  (100 * progressEvent.loaded) / progressEvent?.total!
+                );
+                api.dispatch(setUploadProgress(uploadloadProgress));
+                return result.data;
+              },
+            }
+          );
+        } catch (error: any) {
+          return {
+            error: error as AxiosError,
+          };
+        }
+      },
     }),
   }),
 });
@@ -224,4 +283,8 @@ export const {
   useDeleteModelMutation,
   useLazyGetModelClassesQuery,
   useLazyGetDiseasesQuery,
+  useGetCropQuery,
+  useCreateCropMutation,
+  useUpdateCropMutation,
+  useDeleteCropMutation,
 } = api;

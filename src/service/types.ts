@@ -4,6 +4,7 @@ export interface User {
   phone: string;
   password: string | null;
   name: string;
+  token?: string;
   is_admin: boolean;
   createdAt?: string;
   updatedAt?: string;
