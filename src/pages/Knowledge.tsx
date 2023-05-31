@@ -22,7 +22,6 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import React from "react";
 import { MuiFileInput } from "mui-file-input";
-import VisibilityIcon from "@mui/icons-material/Visibility";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 export default function KnowledgePage() {
