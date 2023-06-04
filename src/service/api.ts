@@ -194,15 +194,15 @@ export const api = createApi({
 
     updateModelClass: builder.mutation<
       ModelClass,
-      { modelId: number; classId: number; class: ModelClass }
+      { modelId: number; class: ModelClass }
     >({
-      query: ({ modelId, classId, class: modelClass }) => ({
-        url: `/models/${modelId}/classes/${classId}`,
+      query: ({ modelId, class: modelClass }) => ({
+        url: `/models/${modelId}/classes/${modelClass.id}`,
         method: "PUT",
         body: modelClass,
       }),
       invalidatesTags: (result, error, params) => [
-        { type: "ModelClass", id: params.classId },
+        { type: "ModelClass", id: params.class.id },
         { type: "ModelClass", id: "LIST" },
       ],
     }),
@@ -219,41 +219,6 @@ export const api = createApi({
         { type: "ModelClass", id: params.classId },
       ],
     }),
-
-    uploadFile: builder.mutation<UploadResp, { file: File; type: string }>({
-      // query: (params) => ({
-      //   url: `/upload`,
-      //   method: "POST",
-      //   body: createMultipartFormData(params),
-      // }),
-      //@ts-ignore
-      queryFn: async (params, api) => {
-        try {
-          const formData = createMultipartFormData(params);
-          const instance = axios.create({
-            baseURL: api.endpoint,
-            withCredentials: true,
-          });
-          const result: AxiosResponse<UploadResp> = await instance.post(
-            "/upload",
-            formData,
-            {
-              onUploadProgress: (progressEvent) => {
-                let uploadloadProgress = Math.round(
-                  (100 * progressEvent.loaded) / progressEvent?.total!
-                );
-                api.dispatch(setUploadProgress(uploadloadProgress));
-                return result.data;
-              },
-            }
-          );
-        } catch (error: any) {
-          return {
-            error: error as AxiosError,
-          };
-        }
-      },
-    }),
   }),
 });
 
@@ -269,7 +234,6 @@ export const {
   useLazyAuthCheckQuery,
   useLoginMutation,
   useLogoutMutation,
-  useUploadFileMutation,
   useGetKnowledgesQuery,
   useGetKnowledgeQuery,
   useCreateKnowledgeMutation,
@@ -283,6 +247,7 @@ export const {
   useDeleteModelMutation,
   useLazyGetModelClassesQuery,
   useLazyGetDiseasesQuery,
+  useUpdateModelClassMutation,
   useGetCropQuery,
   useCreateCropMutation,
   useUpdateCropMutation,

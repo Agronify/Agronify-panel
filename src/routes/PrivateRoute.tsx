@@ -31,7 +31,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import * as jwt from "jsonwebtoken";
+import * as jose from "jose";
 
 interface PrivateRouteProps {
   children: JSX.Element;
@@ -43,10 +43,8 @@ const PrivateRoute: FC<PrivateRouteProps> = (props: PrivateRouteProps) => {
     return <Navigate to="/login" />;
   }
   if (authData.user) {
-    const decodedToken: any = jwt.decode(authData.user?.token!, {
-      complete: true,
-    });
-    if (decodedToken.payload.exp * 1000 < Date.now()) {
+    const decodedToken: any = jose.decodeJwt(authData.user?.token!);
+    if (decodedToken.exp * 1000 < Date.now()) {
       return <Navigate to="/login" />;
     }
     return <DashboardBase {...props} />;

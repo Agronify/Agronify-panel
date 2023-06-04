@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 import React from "react";
 import useAuth from "../../auth/useAuth";
 import { useAppSelector } from "../../hooks";
+import * as jose from "jose";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -27,7 +28,16 @@ export default function LoginPage() {
   const authData = useAppSelector((state) => state.auth);
 
   React.useEffect(() => {
+    let redirect = false;
     if (authData.user) {
+      let decodedToken = jose.decodeJwt(authData?.user.token!);
+      let exp = decodedToken.exp;
+      let now = Math.floor(Date.now() / 1000);
+      if (exp && exp > now) {
+        redirect = true;
+      }
+    }
+    if (redirect) {
       navigate("/");
     }
     return () => {};

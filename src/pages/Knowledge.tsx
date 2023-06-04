@@ -14,7 +14,6 @@ import {
 import {
   useGetKnowledgesQuery,
   useCreateKnowledgeMutation,
-  useUploadFileMutation,
   useDeleteKnowledgeMutation,
   useUpdateKnowledgeMutation,
 } from "../service/api";
@@ -24,6 +23,7 @@ import React from "react";
 import { MuiFileInput } from "mui-file-input";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import UploadFile from "../components/Upload";
 export default function KnowledgePage() {
   const {
     data: knowledges,
@@ -96,7 +96,6 @@ export default function KnowledgePage() {
       },
     },
   ];
-  const [uploadFile, { data: uploadData }] = useUploadFileMutation();
   const [createKnowledge, { data: createData }] = useCreateKnowledgeMutation();
   const [updateKnowledge, { data: updateData }] = useUpdateKnowledgeMutation();
   const [deleteKnowledge, { data: deleteData }] = useDeleteKnowledgeMutation();
@@ -106,14 +105,9 @@ export default function KnowledgePage() {
   const [tags, setTags] = React.useState("");
   const [content, setContent] = React.useState("");
 
+  const [respUpload, setRespUpload] = React.useState<any>({ path: "" });
+
   const handleCreate = async () => {
-    let respUpload = { path: "" };
-    if (image) {
-      respUpload = await uploadFile({
-        file: image as File,
-        type: "images",
-      }).unwrap();
-    }
     if (editId) {
       await updateKnowledge({
         id: editId,
@@ -140,6 +134,10 @@ export default function KnowledgePage() {
     setEditId(0);
     setCreateOpen(false);
   };
+
+  const [openUpload, setOpenUpload] = React.useState(false);
+  const [file, setFile] = React.useState<File>();
+  const [progress, setProgress] = React.useState(0);
 
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
@@ -202,15 +200,12 @@ export default function KnowledgePage() {
               />
             </Grid>
             <Grid item xs={12} md={12} lg={12}>
-              <MuiFileInput
-                required
-                sx={{
-                  width: "100%",
-                }}
-                value={image}
-                placeholder="Upload Image"
-                onChange={(e) => setImage(e)}
-              />
+              <UploadFile
+                file={file}
+                setFile={setFile}
+                type="images"
+                setResUpload={setRespUpload}
+              ></UploadFile>
             </Grid>
             <Grid item xs={12} md={12} lg={12}>
               <TextField
