@@ -63,7 +63,7 @@ export interface Model {
 export interface ModelClass {
   id?: number;
   model_id: number;
-  disease_id: number;
-  disease: CropDisease;
+  disease_id?: number;
+  disease?: CropDisease;
   index: number;
 }

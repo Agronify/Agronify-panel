@@ -28,12 +28,15 @@ import {
   useLazyGetDiseasesQuery,
   useLazyGetModelClassesQuery,
   useLazyGetModelQuery,
+  useUpdateModelClassMutation,
   useUpdateModelMutation,
-  useUploadFileMutation,
 } from "../service/api";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import React from "react";
+import UploadFile from "../components/Upload";
+import { ModelClass } from "../service/types";
+import Swal from "sweetalert2";
 
 export default function ModelPage() {
   const {
@@ -42,8 +45,6 @@ export default function ModelPage() {
     isError: mError,
   } = useGetModelsQuery();
   const { data: crops } = useGetCropsQuery();
-
-  const [uploadFile, { data: uploadData }] = useUploadFileMutation();
   const [createModel, { data: createData }] = useCreateModelMutation();
   const [updateModel, { data: updateData }] = useUpdateModelMutation();
   const [deleteModel, { data: deleteData }] = useDeleteModelMutation();
@@ -55,7 +56,7 @@ export default function ModelPage() {
   const [createOpen, setCreateOpen] = React.useState(false);
   const [name, setName] = React.useState("");
   const [cropId, setCropId] = React.useState(0);
-  const [file, setFile] = React.useState<File | null>(null);
+  const [file, setFile] = React.useState<File>();
   const [type, setType] = React.useState("");
   const [active, setActive] = React.useState(false);
 
@@ -65,6 +66,8 @@ export default function ModelPage() {
     { data: selectedModelClasses, isLoading: selectedMCLoading },
   ] = useLazyGetModelClassesQuery();
   const [loadDiseases, { data: diseasesData }] = useLazyGetDiseasesQuery();
+  const [updateModelClass, { isLoading: updateMClass }] =
+    useUpdateModelClassMutation();
 
   const columns: GridColDef[] = [
     { field: "name", headerName: "Model Name", width: 200 },
@@ -128,14 +131,8 @@ export default function ModelPage() {
     },
   ];
 
+  const [respUpload, setRespUpload] = React.useState<any>({ path: "" });
   const handleCreate = async () => {
-    let respUpload = { path: "" };
-    if (file) {
-      respUpload = await uploadFile({
-        file: file as File,
-        type: "models",
-      }).unwrap();
-    }
     if (editId) {
       await updateModel({
         id: editId,
@@ -159,7 +156,7 @@ export default function ModelPage() {
     }
     setName("");
     setCropId(0);
-    setFile(null);
+    setFile(undefined);
     setType("");
     setActive(false);
     setEditId(0);
@@ -167,21 +164,33 @@ export default function ModelPage() {
   };
 
   const classColumns: GridColDef[] = [
-    { field: "index", headerName: "Output Index", width: 100, align: "center" },
+    {
+      field: "index",
+      headerName: "Output Index",
+      width: 100,
+      align: "center",
+      sortingOrder: ["asc"],
+      sortable: false,
+    },
     {
       field: "disease",
       headerName: "Disease",
       width: 200,
+      sortable: false,
       renderCell: (params) => {
         return (
-          <Select fullWidth onChange={(e) => {}}>
+          <Select
+            fullWidth
+            onChange={(e) => {
+              e.preventDefault();
+              handleUpdateClass(e.target.value as number, params.row);
+            }}
+            value={(params.row.disease as any)?.id || 0}
+          >
             <MenuItem value={0}>Healthy</MenuItem>
             {diseasesData?.map((disease) => {
               return (
-                <MenuItem
-                  value={disease.id}
-                  selected={disease.id === (params.row.disease as any).id}
-                >
+                <MenuItem key={disease.id} value={disease.id}>
                   {disease.name}
                 </MenuItem>
               );
@@ -191,6 +200,30 @@ export default function ModelPage() {
       },
     },
   ];
+
+  const handleUpdateClass = async (
+    diseaseId: number,
+    modelClass: ModelClass
+  ) => {
+    await updateModelClass({
+      modelId: selectedModel?.id as number,
+      class: {
+        disease_id: diseaseId,
+        disease: undefined,
+        index: modelClass.index,
+        model_id: modelClass.model_id,
+        id: modelClass.id,
+      },
+    }).unwrap();
+    Swal.fire({
+      icon: "success",
+      toast: true,
+      position: "bottom-end",
+      showConfirmButton: false,
+      timer: 1500,
+      title: "Update Success",
+    });
+  };
 
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
@@ -236,6 +269,7 @@ export default function ModelPage() {
                 if (e.length > 0) {
                   await getModelClasses(e[0] as number).unwrap();
                   await loadDiseases(e[0] as number).unwrap();
+                  await getModel(e[0] as number).unwrap();
                 }
               }}
               getRowHeight={(params) => "auto"}
@@ -266,10 +300,19 @@ export default function ModelPage() {
               rowSelection={false}
               pagination={undefined}
               hideFooter
-              sortingOrder={["asc"]}
               disableColumnSelector
               disableColumnFilter
               disableColumnMenu
+              initialState={{
+                sorting: {
+                  sortModel: [
+                    {
+                      field: "index",
+                      sort: "asc",
+                    },
+                  ],
+                },
+              }}
             />
           </Card>
         </Grid>
@@ -301,24 +344,22 @@ export default function ModelPage() {
               >
                 <option value={0}>Select Crop/Fruit</option>
                 {crops?.map((crop) => (
-                  <option value={crop.id}>{crop.name}</option>
+                  <option key={crop.id} value={crop.id}>
+                    {crop.name}
+                  </option>
                 ))}
               </Select>
             </Grid>
             <Grid item xs={12} md={12} lg={12}>
-              <MuiFileInput
-                required
-                sx={{
-                  width: "100%",
-                }}
-                value={file}
-                onChange={(e) => setFile(e)}
-                name="file"
-                label="File"
+              <UploadFile
+                file={file}
+                setFile={setFile}
+                type="images"
+                setResUpload={setRespUpload}
                 inputProps={{
                   accept: ".h5",
                 }}
-              />
+              ></UploadFile>
             </Grid>
             <Grid item xs={12} md={12} lg={12}>
               <Select
