@@ -59,6 +59,8 @@ export default function ModelPage() {
   const [file, setFile] = React.useState<File>();
   const [type, setType] = React.useState("");
   const [active, setActive] = React.useState(false);
+  const [normalize, setNormalize] = React.useState(false);
+  const [threshold, setThreshold] = React.useState(0);
 
   const [getModel, { data: selectedModel }] = useLazyGetModelQuery();
   const [
@@ -80,6 +82,19 @@ export default function ModelPage() {
       },
     },
     { field: "type", headerName: "Type", width: 100 },
+    { field: "threshold", headerName: "Threshold %", width: 100 },
+    {
+      field: "normalize",
+      headerName: "Use Normalize?",
+      width: 150,
+      renderCell: (params) => {
+        return (
+          <>
+            <Checkbox checked={params.row.normalize as boolean} disabled />
+          </>
+        );
+      },
+    },
     {
       field: "active",
       headerName: "Active",
@@ -109,6 +124,8 @@ export default function ModelPage() {
                 setCropId(params.row.crop_id as number);
                 setType(params.row.type as string);
                 setActive(params.row.active as boolean);
+                setNormalize(params.row.normalize as boolean);
+                setThreshold(params.row.threshold as number);
                 setCreateOpen(true);
               }}
             >
@@ -141,6 +158,8 @@ export default function ModelPage() {
         file: respUpload.path === "" ? undefined : respUpload.path,
         type,
         active,
+        threshold,
+        normalize,
       }).unwrap();
     } else {
       if (respUpload.path === "") {
@@ -152,6 +171,8 @@ export default function ModelPage() {
         file: respUpload.path,
         type,
         active,
+        threshold,
+        normalize,
       }).unwrap();
     }
     setName("");
@@ -372,6 +393,34 @@ export default function ModelPage() {
                 <option value="disease">Disease</option>
                 <option value="ripeness">Ripeness</option>
               </Select>
+            </Grid>
+
+            <Grid item xs={12} md={12} lg={12}>
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <Checkbox
+                  id="normalize"
+                  checked={normalize}
+                  onChange={(e: any) => setNormalize(e.target.checked)}
+                />
+                <InputLabel htmlFor="normalize">Use Normalize?</InputLabel>
+              </Box>
+            </Grid>
+            <Grid item xs={12} md={12} lg={12}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="threshold"
+                label="threshold"
+                name="threshold"
+                autoComplete="threshold"
+                type="number"
+                InputProps={{
+                  inputProps: { min: 0 },
+                }}
+                onChange={(e) => setThreshold(parseInt(e.target.value))}
+                value={threshold}
+              />
             </Grid>
             <Grid item xs={12} md={12} lg={12}>
               <Box sx={{ display: "flex", alignItems: "center" }}>

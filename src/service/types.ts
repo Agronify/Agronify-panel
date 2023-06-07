@@ -56,6 +56,8 @@ export interface Model {
   inputWidth?: number;
   inputHeight?: number;
   classAmount?: number;
+  normalize: boolean;
+  threshold: number;
   createdAt?: string;
   updatedAt?: string;
 }
