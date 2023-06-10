@@ -375,7 +375,7 @@ export default function ModelPage() {
               <UploadFile
                 file={file}
                 setFile={setFile}
-                type="images"
+                type="models"
                 setResUpload={setRespUpload}
                 inputProps={{
                   accept: ".h5",
