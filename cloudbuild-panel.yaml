@@ -7,4 +7,4 @@ steps:
       - "VITE_API_URL=${_VITE_API_URL}"
   #The .env file is prepared and ready to deploy to Google App Engine
   - name: "gcr.io/cloud-builders/gcloud"
-    args: ["app", "deploy", "--ignore-file=cloudbuild.yaml"]
+    args: ["app", "deploy"]
