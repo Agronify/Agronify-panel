@@ -29,7 +29,6 @@ export interface Crop {
   id?: number;
   name: string;
   image?: string;
-  description: string;
   type: string;
   is_fruit: boolean;
   createdAt?: string;

@@ -1,7 +1,15 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import { setUploadProgress } from "../slices/global";
-import { Crop, Knowledge, Model, ModelClass, UploadResp, User } from "./types";
+import {
+  Crop,
+  Knowledge,
+  CropDisease,
+  Model,
+  ModelClass,
+  UploadResp,
+  User,
+} from "./types";
 
 export const api = createApi({
   reducerPath: "api",
@@ -9,7 +17,7 @@ export const api = createApi({
     baseUrl: import.meta.env.VITE_API_URL,
     credentials: "include",
   }),
-  tagTypes: ["Knowledge", "Crop", "Model", "ModelClass"],
+  tagTypes: ["Knowledge", "Crop", "CropDisease", "Model", "ModelClass"],
   endpoints: (builder) => ({
     authCheck: builder.query<User | null, void>({
       query: () => `/auth/check`,
@@ -115,9 +123,69 @@ export const api = createApi({
       invalidatesTags: (result, error, id) => [{ type: "Crop", id }],
     }),
 
-    getDiseases: builder.query<Crop[], number>({
+    getDiseases: builder.query<CropDisease[], number>({
       query: (id) => `/crops/${id}/diseases`,
-      providesTags: (result, error, id) => [{ type: "Crop", id }],
+      providesTags: (result) =>
+        result
+          ? [
+              ...result.map(({ id }) => ({ type: "CropDisease", id } as const)),
+              {
+                type: "CropDisease",
+                id: "LIST",
+              },
+            ]
+          : [{ type: "CropDisease", id: "LIST" }],
+    }),
+
+    getDisease: builder.query<
+      CropDisease,
+      { cropId: number; diseaseId: number }
+    >({
+      query: ({ cropId, diseaseId }) =>
+        `/crops/${cropId}/diseases/${diseaseId}`,
+      providesTags: (result, error, { cropId, diseaseId }) => [
+        { type: "CropDisease", id: diseaseId },
+      ],
+    }),
+
+    createDisease: builder.mutation<
+      CropDisease,
+      { cropId: number; disease: CropDisease }
+    >({
+      query: (params) => ({
+        url: `/crops/${params.cropId}/diseases`,
+        method: "PUT",
+        body: params,
+      }),
+      invalidatesTags: (result, error, params) => [
+        { type: "CropDisease", id: params.disease.id },
+        { type: "CropDisease", id: "LIST" },
+      ],
+    }),
+
+    updateDisease: builder.mutation<
+      CropDisease,
+      { cropId: number; diseases: CropDisease }
+    >({
+      query: ({ cropId, diseases: cropdisease }) => ({
+        url: `/crops/${cropId}/diseases/${cropdisease.id}`,
+        method: "PUT",
+        body: cropdisease,
+      }),
+      invalidatesTags: (result, error) => [{ type: "CropDisease", id: "LIST" }],
+    }),
+
+    deleteDisease: builder.mutation<
+      void,
+      { cropId: number; diseaseId: number }
+    >({
+      query: ({ cropId, diseaseId }) => ({
+        url: `/crops/${cropId}/diseases/${diseaseId}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: (result, error, params) => [
+        { type: "CropDisease", id: params.diseaseId },
+      ],
     }),
 
     getModels: builder.query<Model[], void>({
@@ -252,4 +320,9 @@ export const {
   useCreateCropMutation,
   useUpdateCropMutation,
   useDeleteCropMutation,
+  useGetDiseasesQuery,
+  useGetDiseaseQuery,
+  useCreateDiseaseMutation,
+  useUpdateDiseaseMutation,
+  useDeleteDiseaseMutation,
 } = api;

@@ -288,9 +288,9 @@ export default function ModelPage() {
               rowSelection
               onRowSelectionModelChange={async (e) => {
                 if (e.length > 0) {
+                  const m = await getModel(e[0] as number).unwrap();
                   await getModelClasses(e[0] as number).unwrap();
-                  await loadDiseases(e[0] as number).unwrap();
-                  await getModel(e[0] as number).unwrap();
+                  await loadDiseases(m.crop_id).unwrap();
                 }
               }}
               getRowHeight={(params) => "auto"}
