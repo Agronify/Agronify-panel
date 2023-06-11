@@ -41,6 +41,7 @@ export interface CropDisease {
   crop_id: number;
   image?: string;
   name: string;
+  type: string;
   description: string;
   createdAt?: string;
   updatedAt?: string;
