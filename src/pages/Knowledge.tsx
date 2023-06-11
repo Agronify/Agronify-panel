@@ -44,10 +44,7 @@ export default function KnowledgePage() {
       renderCell: (params) => {
         return (
           <img
-            src={
-              "https://storage.googleapis.com/agronify_bucket/" +
-              params.row.image
-            }
+            src={"https://storage.googleapis.com/" + params.row.image}
             alt="image"
             className="h-full w-full object-cover"
           />

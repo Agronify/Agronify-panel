@@ -29,7 +29,6 @@ export interface Crop {
   id?: number;
   name: string;
   image?: string;
-  description: string;
   type: string;
   is_fruit: boolean;
   createdAt?: string;
@@ -41,7 +40,6 @@ export interface CropDisease {
   crop_id: number;
   image?: string;
   name: string;
-  type: string;
   description: string;
   createdAt?: string;
   updatedAt?: string;

@@ -33,7 +33,7 @@ export const routes: RouteInterface[] = [
   {
     title: "Crop Disease",
     guard: true,
-    path: "/cropdisease",
+    path: "/crop/:id/disease",
     component: CropDiseasePage,
   },
   {

@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { FC } from "react";
 import { useAppSelector } from "../hooks";
 
@@ -110,6 +110,8 @@ function DashboardBase(props: DashboardBaseProps) {
     setOpen(!open);
   };
 
+  const navigate = useNavigate();
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -179,7 +181,12 @@ function DashboardBase(props: DashboardBaseProps) {
             </ListItemIcon>
             <ListItemText primary="Dashboard" />
           </ListItemButton>
-          <ListItemButton component="a" href="/knowledge">
+          <ListItemButton
+            component="a"
+            onClick={() => {
+              navigate("/knowledge");
+            }}
+          >
             <ListItemIcon>
               <svg
                 width="30"
@@ -219,7 +226,12 @@ function DashboardBase(props: DashboardBaseProps) {
             </ListItemIcon>
             <ListItemText primary="Knowledge Data" />
           </ListItemButton>
-          <ListItemButton component="a" href="/crop">
+          <ListItemButton
+            component="a"
+            onClick={() => {
+              navigate("/crop");
+            }}
+          >
             <ListItemIcon>
               <svg
                 width="30"
@@ -256,44 +268,7 @@ function DashboardBase(props: DashboardBaseProps) {
             </ListItemIcon>
             <ListItemText primary="Crop Data" />
           </ListItemButton>
-          <ListItemButton component="a" href="/cropdisease">
-            <ListItemIcon>
-              <svg
-                width="30"
-                height="30"
-                viewBox="0 0 51 50"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect
-                  x="0.53772"
-                  width="50"
-                  height="50"
-                  rx="10"
-                  fill="#33B86A"
-                />
-                <path
-                  d="M33.0991 27.4024C32.1002 28.0096 30.9529 28.329 29.7839 28.3252C28.8046 28.3174 27.8364 28.1171 26.9343 27.7357C26.2391 28.7171 25.8671 29.8908 25.8699 31.0935V34.165C25.8702 34.2792 25.8469 34.3922 25.8017 34.4971C25.7564 34.602 25.69 34.6964 25.6067 34.7745C25.5234 34.8527 25.4249 34.9128 25.3173 34.9513C25.2098 34.9898 25.0955 35.0057 24.9815 34.9982C24.7673 34.9795 24.5681 34.8806 24.4239 34.7213C24.2796 34.5619 24.2009 34.3539 24.2035 34.1389V32.8433L20.1812 28.821C19.5833 29.044 18.9509 29.1607 18.3127 29.1657C17.4342 29.1679 16.5721 28.9275 15.8214 28.471C13.552 27.0921 12.3303 23.9186 12.5667 19.9785C12.5786 19.7747 12.6649 19.5823 12.8093 19.4379C12.9537 19.2936 13.1461 19.2072 13.3499 19.1953C17.2899 18.9631 20.4634 20.1806 21.8382 22.45C22.3784 23.3396 22.6142 24.3808 22.51 25.4163C22.5035 25.4965 22.474 25.5731 22.4248 25.6369C22.3757 25.7007 22.3092 25.7489 22.2333 25.7756C22.1574 25.8024 22.0754 25.8066 21.9971 25.7877C21.9189 25.7689 21.8478 25.7278 21.7924 25.6693L19.7927 23.5759C19.6352 23.4263 19.4254 23.344 19.2081 23.3468C18.9909 23.3496 18.7833 23.4372 18.6296 23.5908C18.476 23.7444 18.3884 23.952 18.3857 24.1693C18.3829 24.3866 18.4651 24.5963 18.6147 24.7539L24.2264 30.5082C24.2327 30.427 24.24 30.3457 24.2483 30.2655C24.4305 28.7207 25.1122 27.2776 26.1897 26.1557L31.4587 20.5878C31.615 20.4316 31.7029 20.2197 31.703 19.9987C31.7031 19.7777 31.6154 19.5657 31.4592 19.4093C31.303 19.253 31.0911 19.1651 30.8701 19.165C30.6491 19.1649 30.4371 19.2526 30.2807 19.4088L25.1773 24.8059C25.1262 24.86 25.0616 24.8995 24.9901 24.9202C24.9186 24.9408 24.8429 24.942 24.7708 24.9235C24.6987 24.905 24.6329 24.8675 24.5802 24.815C24.5275 24.7624 24.4899 24.6967 24.4712 24.6247C23.9775 22.8042 24.1952 20.9919 25.1377 19.4359C26.9979 16.3655 31.3264 14.722 36.7173 15.0386C36.9211 15.0505 37.1135 15.1369 37.2579 15.2813C37.4022 15.4256 37.4886 15.618 37.5005 15.8219C37.8129 21.2138 36.1694 25.5423 33.0991 27.4024Z"
-                  fill="url(#paint0_linear_225_1617)"
-                />
-                <defs>
-                  <linearGradient
-                    id="paint0_linear_225_1617"
-                    x1="14.3014"
-                    y1="32.9828"
-                    x2="30.834"
-                    y2="15.2428"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop offset="0.0048071" stopColor="#B3EC82" />
-                    <stop offset="1" stopColor="#9CCC65" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </ListItemIcon>
-            <ListItemText primary="Crop Disease" />
-          </ListItemButton>
-          <ListItemButton component="a" href="/model">
+          <ListItemButton component="a" onClick={() => navigate("/model")}>
             <ListItemIcon>
               <svg
                 width="30"

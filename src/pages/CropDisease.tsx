@@ -11,6 +11,7 @@ import {
   TextField,
   DialogContentText,
   DialogActions,
+  Typography,
 } from "@mui/material";
 import {
   useGetCropsQuery,
@@ -28,31 +29,28 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import UploadFile from "../components/Upload";
+import { useParams } from "react-router-dom";
 export default function CropDiseasePage() {
+  const { id } = useParams<{ id: string }>();
   const {
     data: diseases,
     isLoading: dsLoading,
     isError: dsError,
-  } = useGetDiseasesQuery();
+  } = useGetDiseasesQuery(parseInt(id!));
 
   const [alertDelete, setAlertDelete] = React.useState(false);
   const [deleteId, setDeleteId] = React.useState(0);
   const [editId, setEditId] = React.useState(0);
 
   const columns: GridColDef[] = [
-    { field: "name", headerName: "Name", width: 200 },
+    { field: "name", headerName: "Name", width: 150 },
     {
       field: "crop",
       headerName: "Crop/Fruit",
-      width: 200,
+      width: 100,
       renderCell: (params) => {
         return <>{(params.row.crop as any).name}</>;
       },
-    },
-    {
-      field: "type",
-      headerName: "Type",
-      width: 200,
     },
     {
       field: "image",
@@ -74,12 +72,27 @@ export default function CropDiseasePage() {
     {
       field: "description",
       headerName: "Description",
-      width: 200,
+      renderCell: (params) => {
+        return (
+          <Typography
+            sx={{
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              display: "-webkit-box",
+              WebkitLineClamp: "5",
+              WebkitBoxOrient: "vertical",
+            }}
+          >
+            {params.row.description}
+          </Typography>
+        );
+      },
+      width: 400,
     },
     {
       field: "id",
       headerName: "Action",
-      width: 300,
+      width: 200,
       renderCell: (params) => {
         return (
           <>
@@ -89,10 +102,9 @@ export default function CropDiseasePage() {
               color="warning"
               onClick={() => {
                 setEditId(params.row.id as number);
-                setName(params.row.title as string);
+                setName(params.row.name as string);
                 setCropId(params.row.crop_id as number);
-                setType(params.row.content as string);
-                setDescription(params.row.content as string);
+                setDescription(params.row.description as string);
                 setCreateOpen(true);
               }}
             >
@@ -122,35 +134,37 @@ export default function CropDiseasePage() {
   const [name, setName] = React.useState("");
   const [cropId, setCropId] = React.useState(0);
   const [image, setImage] = React.useState<File>();
-  const [type, setType] = React.useState("");
   const [description, setDescription] = React.useState("");
   const [respUpload, setRespUpload] = React.useState<any>({ path: "" });
   const handleCreate = async () => {
     if (editId) {
       await updateDisease({
-        id: editId,
-        name,
-        crop_id: cropId,
-        image: respUpload.path === "" ? undefined : respUpload.path,
-        type,
-        description,
+        cropId: parseInt(id!),
+        diseases: {
+          id: editId,
+          name,
+          crop_id: cropId,
+          image: respUpload.path === "" ? undefined : respUpload.path,
+          description,
+        },
       }).unwrap();
     } else {
       if (respUpload.path === "") {
         return;
       }
       await createDisease({
-        name,
-        crop_id: cropId,
-        image: respUpload.path,
-        type,
-        description,
+        cropId: parseInt(id!),
+        disease: {
+          name,
+          crop_id: cropId,
+          image: respUpload.path,
+          description,
+        },
       }).unwrap();
     }
     setName("");
     setCropId(0);
     setImage(undefined);
-    setType("");
     setDescription("");
     setEditId(0);
     setCreateOpen(false);
@@ -230,19 +244,6 @@ export default function CropDiseasePage() {
               </Select>
             </Grid>
             <Grid item xs={12} md={12} lg={12}>
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="type"
-                label="Type"
-                name="type"
-                autoComplete="type"
-                onChange={(e: any) => setType(e.target.value)}
-                value={type}
-              />
-            </Grid>
-            <Grid item xs={12} md={12} lg={12}>
               <UploadFile
                 file={image}
                 setFile={setImage}
@@ -299,7 +300,10 @@ export default function CropDiseasePage() {
           </Button>
           <Button
             onClick={async () => {
-              await deleteDisease(deleteId).unwrap();
+              await deleteDisease({
+                cropId: parseInt(id!),
+                diseaseId: deleteId,
+              }).unwrap();
               setAlertDelete(false);
             }}
             color="error"

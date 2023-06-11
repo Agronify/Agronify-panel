@@ -10,6 +10,10 @@ import {
   TextField,
   DialogContentText,
   DialogActions,
+  Box,
+  Checkbox,
+  InputLabel,
+  ListItemIcon,
 } from "@mui/material";
 import {
   useGetCropsQuery,
@@ -25,6 +29,8 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import UploadFile from "../components/Upload";
+import { useNavigate } from "react-router-dom";
+import { ViewList } from "@mui/icons-material";
 export default function CropPage() {
   const {
     data: crops,
@@ -35,6 +41,8 @@ export default function CropPage() {
   const [alertDelete, setAlertDelete] = React.useState(false);
   const [deleteId, setDeleteId] = React.useState(0);
   const [editId, setEditId] = React.useState(0);
+
+  const navigate = useNavigate();
 
   const columns: GridColDef[] = [
     { field: "name", headerName: "Name", width: 200 },
@@ -50,10 +58,7 @@ export default function CropPage() {
       renderCell: (params) => {
         return (
           <img
-            src={
-              "https://storage.googleapis.com/agronify_bucket/" +
-              params.row.image
-            }
+            src={"https://storage.googleapis.com/" + params.row.image}
             alt="image"
             className="h-full w-full object-cover"
           />
@@ -61,9 +66,16 @@ export default function CropPage() {
       },
     },
     {
-      field: "description",
-      headerName: "Description",
-      width: 200,
+      field: "is_fruit",
+      headerName: "Is Fruit?",
+      width: 100,
+      renderCell: (params) => {
+        return (
+          <>
+            <Checkbox checked={params.row.is_fruit as boolean} disabled />
+          </>
+        );
+      },
     },
     {
       field: "id",
@@ -75,12 +87,21 @@ export default function CropPage() {
             <Button
               variant="contained"
               sx={{ m: 0.5 }}
+              color="primary"
+              onClick={() => {
+                navigate("/crop/" + params.row.id + "/disease");
+              }}
+            >
+              <ViewList />
+            </Button>
+            <Button
+              variant="contained"
+              sx={{ m: 0.5 }}
               color="warning"
               onClick={() => {
                 setEditId(params.row.id as number);
-                setName(params.row.title as string);
-                setType(params.row.content as string);
-                setDescription(params.row.content as string);
+                setName(params.row.name as string);
+                setType(params.row.type as string);
                 setCreateOpen(true);
               }}
             >
@@ -109,7 +130,7 @@ export default function CropPage() {
   const [name, setName] = React.useState("");
   const [image, setImage] = React.useState<File>();
   const [type, setType] = React.useState("");
-  const [description, setDescription] = React.useState("");
+  const [isFruit, setIsFruit] = React.useState(false);
   const [respUpload, setRespUpload] = React.useState<any>({ path: "" });
   const handleCreate = async () => {
     if (editId) {
@@ -118,8 +139,7 @@ export default function CropPage() {
         name,
         image: respUpload.path === "" ? undefined : respUpload.path,
         type,
-        description,
-        is_fruit: false,
+        is_fruit: isFruit,
       }).unwrap();
     } else {
       if (respUpload.path === "") {
@@ -129,14 +149,12 @@ export default function CropPage() {
         name,
         image: respUpload.path,
         type,
-        description,
-        is_fruit: false,
+        is_fruit: isFruit,
       }).unwrap();
     }
     setName("");
     setImage(undefined);
     setType("");
-    setDescription("");
     setEditId(0);
     setCreateOpen(false);
   };
@@ -221,18 +239,14 @@ export default function CropPage() {
               ></UploadFile>
             </Grid>
             <Grid item xs={12} md={12} lg={12}>
-              <TextField
-                multiline
-                margin="normal"
-                required
-                fullWidth
-                id="description"
-                label="Description"
-                name="description"
-                autoComplete="Description"
-                onChange={(e: any) => setDescription(e.target.value)}
-                value={description}
-              />
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <Checkbox
+                  id="is_fruit"
+                  checked={isFruit}
+                  onChange={(e: any) => setIsFruit(e.target.checked)}
+                />
+                <InputLabel htmlFor="is_fruit">Fruit</InputLabel>
+              </Box>
             </Grid>
             <Grid item xs={12} md={12} lg={12}>
               <Button

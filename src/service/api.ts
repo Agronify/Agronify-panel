@@ -150,15 +150,15 @@ export const api = createApi({
 
     createDisease: builder.mutation<
       CropDisease,
-      { id: number; diseases: CropDisease }
+      { cropId: number; disease: CropDisease }
     >({
       query: (params) => ({
-        url: `/crops/${params.id}/diseases`,
+        url: `/crops/${params.cropId}/diseases`,
         method: "PUT",
         body: params,
       }),
       invalidatesTags: (result, error, params) => [
-        { type: "CropDisease", id: params.diseases.id },
+        { type: "CropDisease", id: params.disease.id },
         { type: "CropDisease", id: "LIST" },
       ],
     }),

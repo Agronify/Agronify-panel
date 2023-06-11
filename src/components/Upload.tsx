@@ -51,7 +51,7 @@ export default function UploadFile(props: Props) {
 
   return (
     <>
-      <Box sx={{ display: "flex", flexDirection: "row" }}>
+      <Box sx={{ display: "flex", flexDirection: "row", marginTop: "1rem" }}>
         <MuiFileInput
           required
           sx={{
