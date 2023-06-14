@@ -169,7 +169,9 @@ function DashboardBase(props: DashboardBaseProps) {
         </Toolbar>
         <Divider />
         <List component="nav">
-          <ListItemButton component="a" href="/">
+          {/* <ListItemButton component="a" onClick={() => {
+              navigate("/dashboard");
+            }}>
             <ListItemIcon>
               <DashboardIcon
                 sx={{
@@ -180,7 +182,7 @@ function DashboardBase(props: DashboardBaseProps) {
               />
             </ListItemIcon>
             <ListItemText primary="Dashboard" />
-          </ListItemButton>
+          </ListItemButton> */}
           <ListItemButton
             component="a"
             onClick={() => {

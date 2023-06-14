@@ -38,7 +38,7 @@ export default function LoginPage() {
       }
     }
     if (redirect) {
-      navigate("/");
+      navigate("/knowledge");
     }
     return () => {};
   }, [authData.user]);
@@ -50,7 +50,7 @@ export default function LoginPage() {
       setIsLoading(false);
       if (res) {
         console.log("login success");
-        navigate("/");
+        navigate("/knowledge");
       }
     });
   };
