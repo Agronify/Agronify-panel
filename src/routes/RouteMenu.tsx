@@ -18,7 +18,7 @@ interface RouteInterface {
 //list of routes, note that title can be overridden using global state or  <LinkButton routeName="Custom Title">
 export const routes: RouteInterface[] = [
   { title: "Login", guard: false, path: "/login", component: LoginPage },
-  { title: "Dashboard", guard: true, path: "/", component: DashboardPage },
+  { title: "Dashboard", guard: true, path: "/dashboard", component: DashboardPage },
   {
     title: "Knowledge Data",
     guard: true,
@@ -46,7 +46,7 @@ export const routes: RouteInterface[] = [
   {
     title: "Landing Page",
     guard: false,
-    path: "/landing",
+    path: "/",
     component: LandingPage
   },
   {

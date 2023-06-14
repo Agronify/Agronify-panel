@@ -154,7 +154,7 @@ export const api = createApi({
     >({
       query: (params) => ({
         url: `/crops/${params.cropId}/diseases`,
-        method: "PUT",
+        method: "POST",
         body: params,
       }),
       invalidatesTags: (result, error, params) => [
