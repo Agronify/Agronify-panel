@@ -60,7 +60,7 @@ export default function CropDiseasePage() {
         return (
           <img
             src={
-              "https://storage.googleapis.com/agronify_bucket/" +
+              "https://storage.googleapis.com/" +
               params.row.image
             }
             alt="image"
@@ -143,7 +143,7 @@ export default function CropDiseasePage() {
         diseases: {
           id: editId,
           name,
-          crop_id: cropId,
+          crop_id: parseInt(id!),
           image: respUpload.path === "" ? undefined : respUpload.path,
           description,
         },
@@ -156,7 +156,7 @@ export default function CropDiseasePage() {
         cropId: parseInt(id!),
         disease: {
           name,
-          crop_id: cropId,
+          crop_id: parseInt(id!),
           image: respUpload.path,
           description,
         },
@@ -227,21 +227,6 @@ export default function CropDiseasePage() {
                 onChange={(e: any) => setName(e.target.value)}
                 value={name}
               />
-            </Grid>
-            <Grid item xs={12} md={12} lg={12}>
-              <Select
-                fullWidth
-                native
-                onChange={(e: any) => setCropId(e.target.value)}
-                value={cropId}
-              >
-                <option value={0}>Select Crop/Fruit</option>
-                {crops?.map((crop) => (
-                  <option key={crop.id} value={crop.id}>
-                    {crop.name}
-                  </option>
-                ))}
-              </Select>
             </Grid>
             <Grid item xs={12} md={12} lg={12}>
               <UploadFile
