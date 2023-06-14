@@ -67,4 +67,5 @@ export interface ModelClass {
   disease_id?: number;
   disease?: CropDisease;
   index: number;
+  ripe: boolean;
 }
