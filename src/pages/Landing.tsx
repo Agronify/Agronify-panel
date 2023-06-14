@@ -1,7 +1,12 @@
+import { ChevronLeftRounded, ChevronRightRounded } from "@mui/icons-material";
+import { useState } from "react";
+
 export default function LandingPage() {
+  const screenshots = ["ss1.png", "ss2.png", "ss3.png", "ss3.png"]
+  const [currentScreenshot, setCurrentScreenshot] = useState(1)
   return (
     <>
-      <div className="w-full h-screen min-h-screen">
+      <div className="w-full min-h-screen">
         <div className="flex flex-col">
           <div className="shadow h-15 w-full">
             <div className="flex flex-col max-w-7xl mx-auto">
@@ -32,43 +37,41 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col w-full mt-24 max-w-7xl mx-auto">
-            <div className="flex">
-              <div className="flex flex-col w-2/3">
-                <div className="text-[54px] font-[700]">
-                  Lorem ipsum dolor sit amet. <br />A cursus vestibulum.
-                </div>
-                <div className="text-[24px] w-4/5 text-[#626262] mt-[30px]">
-                  Agronify adalah solusi lengkap untuk memajukan pertanian Anda.
-                  Dengan teknologi terbaru dan fitur inovatif, kami membantu
-                  petani meningkatkan produktivitas mereka,
-                </div>
+        </div>
+        <div className="flex flex-col w-full h-screen">
+          <div className="flex  mt-24 max-w-7xl mx-auto ">
+            <div className="flex flex-col w-2/3">
+              <div className="text-[54px] font-[700]">
+                Lorem ipsum dolor sit amet. <br />A cursus vestibulum.
               </div>
-              <img
-                src="/landing/image1.png"
-                className="ml-auto lg:w-[400px] md:w-[300px] w-[250px]"
-              />
+              <div className="text-[24px] w-4/5 text-[#626262] mt-[30px]">
+                Agronify adalah solusi lengkap untuk memajukan pertanian Anda.
+                Dengan teknologi terbaru dan fitur inovatif, kami membantu
+                petani meningkatkan produktivitas mereka,
+              </div>
             </div>
+            <img
+              src="/landing/image1.png"
+              className="ml-auto lg:w-[400px] md:w-[300px] w-[250px]"
+            />
+          </div>
+          <div>
+            <img src="/landing/bottom-vector.png" className="w-full mt-16" />
           </div>
         </div>
-        <div>
-          <img src="/landing/bottom-vector.png" className="w-full mt-16" />
-        </div>
-        <div className="flex flex-col w-full mt-6">
+        <div className="flex flex-col w-full h-screen">
           <div className="flex flex-col max-w-4xl mx-auto text-center">
             <div className="text-[48px] font-bold">Fitur Aplikasi</div>
             <div className="text-[20px] text-[#626262]">
-              Lorem ipsum dolor sit amet consectetur. Quis ac amet mauris est
-              arcu. Orci feugiat lectus sit vel consectetur non. Sollicitudin
-              sed ac et malesuada.
+            Aplikasi dengan fitur inovatif untuk petani modern, solusi teknologi yang mempermudah pekerjaan, meningkatkan efisiensi, dan mendorong pertumbuhan ekonomi pertanian.
             </div>
           </div>
-          <div className="flex max-w-[80%] mx-auto mt-[80px] pb-16">
+          <div className="flex max-w-[80%] mx-auto h-screen">
             <div className="flex-1 flex flex-col mr-[64px] justify-around">
               <div className="flex w-full space-x-8">
                 <div className="flex-1 flex flex-col">
                   <div className="text-[24px] font-bold text-right -mt-2">AgroWeather</div>
-                  <div className="text-right">
+                  <div className="text-right text-[#626262]">
                     Menyediakan informasi cuaca terkini dan prakiraan jangka pendek untuk membantu petani mengambil keputusan yang tepat dalam menjalankan aktivitas pertanian mereka.
                   </div>
                 </div>
@@ -87,7 +90,7 @@ export default function LandingPage() {
               <div className="flex w-full space-x-8">
                 <div className="flex-1 flex flex-col">
                   <div className="text-[24px] font-bold text-right -mt-2">AgroEdu</div>
-                  <div className="text-right">
+                  <div className="text-right text-[#626262]">
                     Menyajikan informasi dan pengetahuan tentang tanaman, seperti pengetahuan dasar jenis-jenis tanaman dan pengetahuan tentang jenis-jenis penyakit tanaman.
                   </div>
                 </div>
@@ -103,7 +106,7 @@ export default function LandingPage() {
               <div className="flex w-full space-x-8">
                 <div className="flex-1 flex flex-col">
                   <div className="text-[24px] font-bold text-right -mt-2">AgroScan</div>
-                  <div className="text-right">
+                  <div className="text-right text-[#626262]">
                     Unggah foto tanaman atau buah Anda untuk mengidentifikasi penyakit dan kematangan buah, serta terima solusi yang sesuai.
                   </div>
                 </div>
@@ -116,7 +119,7 @@ export default function LandingPage() {
               <div className="flex w-full space-x-8">
                 <div className="flex-1 flex flex-col">
                   <div className="text-[24px] font-bold text-right -mt-2">AgroHub</div>
-                  <div className="text-right">
+                  <div className="text-right text-[#626262]">
                     Diskusikan, tanya jawab, dan berbagi pengalaman dengan petani lain untuk memperluas jaringan, mendapatkan saran, dan belajar dari praktik terbaik.
                   </div>
                 </div>
@@ -133,7 +136,9 @@ export default function LandingPage() {
                 </svg>
               </div>
             </div>
-            <img src="/landing/image2.png" className="w-[320px]" />
+            <div className="my-auto">
+              <img src="/landing/image2.png" className="w-[360px]" />
+            </div>
             <div className="flex-1 flex flex-col ml-[64px] justify-around">
               <div className="flex w-full space-x-8">
                 <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -159,7 +164,7 @@ export default function LandingPage() {
                 </svg>
                 <div className="flex-1 flex flex-col">
                   <div className="text-[24px] font-bold -mt-2">AgroMart</div>
-                  <div className="">
+                  <div className="text-[#626262]">
                     Optimalkan distribusi pertanian. Petani dapat memamerkan, menegosiasikan, dan mendapatkan harga terbaik dan pembeli dapat mengakses produk berkualitas tinggi.
                   </div>
                 </div>
@@ -187,7 +192,7 @@ export default function LandingPage() {
                 </svg>
                 <div className="flex-1 flex flex-col">
                   <div className="text-[24px] font-bold -mt-2">AgroWork</div>
-                  <div className="">
+                  <div className="text-[#626262]">
                     Menyajikan informasi dan pengetahuan tentang tanaman, seperti pengetahuan dasar jenis-jenis tanaman dan pengetahuan tentang jenis-jenis penyakit tanaman.
                   </div>
                 </div>
@@ -227,7 +232,7 @@ export default function LandingPage() {
                 </svg>
                 <div className="flex-1 flex flex-col">
                   <div className="text-[24px] font-bold -mt-2">AgroPlan</div>
-                  <div className="">
+                  <div className="text-[#626262]">
                     Memberdayakan petani melalui alat dan pengetahuan penting, optimalkan produktivitas, dan pertumbuhan industri pertanian yang tangguh dan sejahtera.
                   </div>
                 </div>
@@ -257,13 +262,108 @@ export default function LandingPage() {
                 </svg>
                 <div className="flex-1 flex flex-col">
                   <div className="text-[24px] font-bold -mt-2">AgroFin</div>
-                  <div className="">
-                  Lacak pendapatan, pengeluaran, hitung biaya produksi, dan peroleh laporan keuangan terperinci untuk mengoptimalkan efisiensi dan profitabilitas usaha Anda.
+                  <div className="text-[#626262]">
+                    Lacak pendapatan, pengeluaran, biaya produksi, dan laporan keuangan terperinci untuk mengoptimalkan efisiensi dan profitabilitas usaha Anda.
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+        <div className="flex w-full h-screen">
+            <div className="flex h-[80%] w-full my-auto" style={{
+              background: 'linear-gradient(153.27deg, #92FF6B -27.07%, #059669 106.97%)'
+            }}>
+              <div className="flex max-w-7xl w-full mx-auto space-x-12">
+                <iframe src="https://www.youtube.com/embed/dNUQTGY5Mw0" className="h-[420px] my-auto flex-1" title="A YouTube video" frameBorder="0"></iframe>
+                <div className="flex flex-col flex-1 my-auto h-[420px]">
+                  <div className="text-[48px] text-white">Demo Aplikasi</div>
+                  <div className="text-[18px] text-white">Agronify, platform inovatif yang dirancang khusus untuk petani modern. Kami berkomitmen untuk menghadirkan solusi teknologi yang mempermudah pekerjaan petani, meningkatkan efisiensi pertanian, dan mendorong pertumbuhan ekonomi di sektor pertanian. Dengan fitur-fitur canggih seperti Prakiraan Cuaca AgroWeather, Informasi Pengetahuan Dasar AgroEdu, dan Identifikasi Penyakit serta Identifikasi Kematangan Buah AgroScan</div>
+                  <div className="mt-auto">
+                    <button className="bg-white border-none px-4 py-2 rounded-md text-[#109E69] font-bold text-[18px] mb-2">Lorem Ipsum</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div className="flex flex-col w-full h-screen">
+          <div className="mt-16 font-bold text-[48px] text-center w-full">Screenshot Aplikasi</div>
+          <div className="w-full text-center text-[18px]">Bergabunglah menjadi bagian dari Agromates dan jadilah bagian dari perubahan di dunia pertanian bersama Agronify.</div>
+          <div className="mt-12 mx-auto w-full flex">
+            <div className="mx-auto flex">
+              <div className={`mr-12 w-[80px] h-[80px] flex my-auto rounded-full bg-transparent hover:bg-[#2DB46A] border-[#2DB46A] border border-solid`} onClick={()=>{
+                if(currentScreenshot>0) setCurrentScreenshot(currentScreenshot-1)
+              }}>
+                <ChevronLeftRounded className="w-[72px] h-[72px] my-auto mx-auto text-[#2DB46A] hover:text-white"/>
+              </div>
+              {screenshots.map((screenshot, index) => {
+                if (index==3){
+                  return (
+                    <div className={`relative `+ (currentScreenshot !== index ? 'hidden' : '')}>
+                      <img src={`/landing/`+screenshot} alt="" className="h-[600px] "/>
+                      <div className="absolute w-full top-0 h-full flex" style={{
+                        background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.87) 0%, #FFFFFF 100%)'
+                      }}>
+                        <div className="my-auto mx-auto text-[40px] text-[#161616] w-2/3 text-center">Bersiaplah! Fitur baru sedang dalam pengembangan dan akan segera hadir</div>
+                      </div>
+                    </div>
+                  )
+                }
+                return <img src={`/landing/`+screenshot} className={`h-[600px] ` + (currentScreenshot !== index ? 'hidden' : '')} alt="" />
+              })}
+              <div className={`ml-12 w-[80px] h-[80px] flex my-auto rounded-full bg-transparent hover:bg-[#2DB46A] border-[#2DB46A] border border-solid`} onClick={()=>{
+                if(currentScreenshot<screenshots.length-1) setCurrentScreenshot(currentScreenshot+1)
+              }}>
+                <ChevronRightRounded className="w-[72px] h-[72px] my-auto mx-auto text-[#2DB46A] hover:text-white"/>
+              </div>
+            </div>
+          </div>
+          <div className="flex w-full space-x-6 mx-auto justify-center mt-12">
+            {screenshots.map((screenshot, index) => (
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="8" cy="8" r={currentScreenshot == index ? `8`:`7.5`} fill={currentScreenshot == index ? `#2DB46A`:`white`} stroke={currentScreenshot == index ? `#2DB46A`:`#33B86A`} onClick={() => setCurrentScreenshot(index)} />
+              </svg>
+            ))}
+          </div>
+        </div>
+        <div className="flex flex-col w-full h-screen">
+          <div className="mt-20 font-bold text-[48px] text-center w-full">Ini kami, Agromates.</div>
+          <div className="w-full text-center text-[18px]">Bersama kami, tingkatkan hasil dan efisiensi pertanian Anda.</div>
+          <div className="flex w-full max-w-7xl mx-auto space-x-3 mt-24">
+            <div className="flex flex-col">
+              <img src="/landing/pp.png" alt="" className="w-[200px] h-[200px] mx-auto mt-12"/>
+              <div className="text-center mt-4 font-bold text-[22px]">Muhammad Dafa Ardiansyah</div>
+              <div className="text-center">Machine Learning</div>
+            </div>
+            <div className="flex flex-col">
+              <img src="/landing/pp.png" alt="" className="w-[200px] h-[200px] mx-auto mt-12"/>
+              <div className="text-center mt-4 font-bold text-[22px]">Rais Ilham Nusantara</div>
+              <div className="text-center">Machine Learning</div>
+            </div>
+            <div className="flex flex-col">
+              <img src="/landing/pp.png" alt="" className="w-[200px] h-[200px] mx-auto mt-12"/>
+              <div className="text-center mt-4 font-bold text-[22px]">Sarah Alissa<br/>Putri</div>
+              <div className="text-center">Machine Learning</div>
+            </div>
+            <div className="flex flex-col">
+              <img src="/landing/pp.png" alt="" className="w-[200px] h-[200px] mx-auto mt-12"/>
+              <div className="text-center mt-4 font-bold text-[22px]">Muhammad Fathurrahman</div>
+              <div className="text-center">Mobile Development</div>
+            </div>
+            <div className="flex flex-col">
+              <img src="/landing/pp.png" alt="" className="w-[200px] h-[200px] mx-auto mt-12"/>
+              <div className="text-center mt-4 font-bold text-[22px]">Muhammad Eko Prasetyo</div>
+              <div className="text-center">Cloud Computing</div>
+            </div>
+            <div className="flex flex-col">
+              <img src="/landing/pp.png" alt="" className="w-[200px] h-[200px] mx-auto mt-12"/>
+              <div className="text-center mt-4 font-bold text-[22px]">Maulidya Firdausy Al Fitri</div>
+              <div className="text-center">Cloud Computing</div>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col w-full h-screen">
+          
         </div>
       </div>
     </>
