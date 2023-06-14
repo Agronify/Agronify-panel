@@ -7,6 +7,7 @@ import KnowledgePage from "../pages/Knowledge";
 import CropPage from "../pages/Crop";
 import CropDiseasePage from "../pages/CropDisease";
 import ModelPage from "../pages/Model";
+import LandingPage from "../pages/Landing";
 interface RouteInterface {
   title: string;
   path: string;
@@ -41,6 +42,12 @@ export const routes: RouteInterface[] = [
     guard: true,
     path: "/model",
     component: ModelPage,
+  },
+  {
+    title: "Landing Page",
+    guard: false,
+    path: "/landing",
+    component: LandingPage
   },
   {
     title: "Not Found",

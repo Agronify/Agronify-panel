@@ -41,11 +41,11 @@ export default function UploadFile(props: Props) {
       onUploadProgress: (progressEvent) => {
         setProgress(progressEvent.loaded / progressEvent.total!);
         if (progressEvent.loaded === progressEvent.total) {
-          setUploading(false);
         }
       },
       signal: controller.signal,
     });
+    setUploading(false);
     props.setResUpload(res.data);
   };
 
