@@ -16,6 +16,7 @@ import {
   Typography,
   Menu,
   MenuItem,
+  CircularProgress,
 } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { MuiFileInput } from "mui-file-input";
@@ -45,8 +46,8 @@ export default function ModelPage() {
     isError: mError,
   } = useGetModelsQuery();
   const { data: crops } = useGetCropsQuery();
-  const [createModel, { data: createData }] = useCreateModelMutation();
-  const [updateModel, { data: updateData }] = useUpdateModelMutation();
+  const [createModel, { data: createData, isLoading: createLoading }] = useCreateModelMutation();
+  const [updateModel, { data: updateData, isLoading: updateLoading }] = useUpdateModelMutation();
   const [deleteModel, { data: deleteData }] = useDeleteModelMutation();
 
   const [alertDelete, setAlertDelete] = React.useState(false);
@@ -439,8 +440,11 @@ export default function ModelPage() {
                 onClick={() => {
                   handleCreate();
                 }}
+                disabled={createLoading || updateLoading}
               >
-                {editId ? "Edit" : "Create"}
+                {(createLoading || updateLoading) ? (
+                  <CircularProgress size={24} color="inherit"/>
+                ) : editId ? "Edit" : "Create"}
               </Button>
             </Grid>
           </Grid>
