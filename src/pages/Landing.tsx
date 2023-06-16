@@ -331,32 +331,32 @@ export default function LandingPage() {
           <div className="w-full text-center text-[18px]">Bersama kami, tingkatkan hasil dan efisiensi pertanian Anda.</div>
           <div className="flex w-full max-w-7xl mx-auto space-x-3 mt-24">
             <div className="flex flex-col">
-              <img src="/landing/people/rais.jpg" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
+              <img src="/landing/people/rais.png" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
               <div className="text-center mt-4 font-bold text-[22px]">Rais Ilham Nusantara</div>
               <div className="text-center">Machine Learning</div>
             </div>
             <div className="flex flex-col">
-              <img src="/landing/people/dafa.jpg" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
+              <img src="/landing/people/dafa.png" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
               <div className="text-center mt-4 font-bold text-[22px]">Muhammad Dafa Ardiansyah</div>
               <div className="text-center">Machine Learning</div>
             </div>
             <div className="flex flex-col">
-              <img src="/landing/people/sarah.jpg" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
+              <img src="/landing/people/sarah.png" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
               <div className="text-center mt-4 font-bold text-[22px]">Sarah Alissa<br/>Putri</div>
               <div className="text-center">Machine Learning</div>
             </div>
             <div className="flex flex-col">
-              <img src="/landing/people/maul.jpg" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
+              <img src="/landing/people/maul.png" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
               <div className="text-center mt-4 font-bold text-[22px]">Maulidya Firdausy Al Fitri</div>
               <div className="text-center">Cloud Computing</div>
             </div>
             <div className="flex flex-col">
-              <img src="/landing/people/fatur.jpg" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
+              <img src="/landing/people/fathur.png" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
               <div className="text-center mt-4 font-bold text-[22px]">Muhammad Fathurrahman</div>
               <div className="text-center">Mobile Development</div>
             </div>
             <div className="flex flex-col">
-              <img src="/landing/people/eko.jpg" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
+              <img src="/landing/people/eko.png" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
               <div className="text-center mt-4 font-bold text-[22px]">Muhammad Eko Prasetyo</div>
               <div className="text-center">Cloud Computing</div>
             </div>
