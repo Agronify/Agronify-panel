@@ -11,10 +11,7 @@ export default function LandingPage() {
           <div className="shadow h-15 w-full">
             <div className="flex flex-col max-w-7xl mx-auto">
               <div className="flex items-center flex-1">
-                <img src="/logo.png" className="w-[60px] h-[60px]" />
-                <div className="text-[#2DB46A] text-[40px] font-[700]">
-                  Agronify
-                </div>
+                <img src="/landing/logo-wide.png" className="h-[60px]" />
                 <div className="flex-1 "></div>
                 {/*expand*/}
                 <div className="flex">
@@ -331,32 +328,32 @@ export default function LandingPage() {
           <div className="w-full text-center text-[18px]">Bersama kami, tingkatkan hasil dan efisiensi pertanian Anda.</div>
           <div className="flex w-full max-w-7xl mx-auto space-x-3 mt-24">
             <div className="flex flex-col">
-              <img src="/landing/people/rais.jpg" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
+              <img src="/landing/people/rais.png" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
               <div className="text-center mt-4 font-bold text-[22px]">Rais Ilham Nusantara</div>
               <div className="text-center">Machine Learning</div>
             </div>
             <div className="flex flex-col">
-              <img src="/landing/people/dafa.jpg" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
+              <img src="/landing/people/dafa.png" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
               <div className="text-center mt-4 font-bold text-[22px]">Muhammad Dafa Ardiansyah</div>
               <div className="text-center">Machine Learning</div>
             </div>
             <div className="flex flex-col">
-              <img src="/landing/people/sarah.jpg" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
+              <img src="/landing/people/sarah.png" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
               <div className="text-center mt-4 font-bold text-[22px]">Sarah Alissa<br/>Putri</div>
               <div className="text-center">Machine Learning</div>
             </div>
             <div className="flex flex-col">
-              <img src="/landing/people/maul.jpg" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
+              <img src="/landing/people/maul.png" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
               <div className="text-center mt-4 font-bold text-[22px]">Maulidya Firdausy Al Fitri</div>
               <div className="text-center">Cloud Computing</div>
             </div>
             <div className="flex flex-col">
-              <img src="/landing/people/fatur.jpg" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
+              <img src="/landing/people/fathur.png" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
               <div className="text-center mt-4 font-bold text-[22px]">Muhammad Fathurrahman</div>
               <div className="text-center">Mobile Development</div>
             </div>
             <div className="flex flex-col">
-              <img src="/landing/people/eko.jpg" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
+              <img src="/landing/people/eko.png" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
               <div className="text-center mt-4 font-bold text-[22px]">Muhammad Eko Prasetyo</div>
               <div className="text-center">Cloud Computing</div>
             </div>
@@ -382,10 +379,9 @@ export default function LandingPage() {
           <div className="flex w-2/3 mx-auto">
             <div className="w-2/3">
               <div className="flex items-center">
-                <img src="/logo.png" alt="" className="w-[50px] h-[50px]"/>
-                <div className="text-[#2DB46A] text-[28px] font-bold">Agronify</div>
+                <img src="/landing/logo-wide.png" alt="" className="h-[50px]"/>
               </div>
-              <div className="text-[#626262] font-[700]">Agronify adalah solusi lengkap untuk memajukan pertanian Anda. Dengan teknologi terbaru dan fitur inovatif, kami membantu petani meningkatkan produktivitas mereka,</div>
+              <div className="text-[#626262] font-[700]">Agronify adalah solusi lengkap untuk memajukan pertanian Anda. Dengan teknologi terbaru dan fitur inovatif, kami membantu petani meningkatkan produktivitas mereka.</div>
             </div>
             <div className="flex w-full space-x-24 mx-12">
               <div className="flex flex-col">
@@ -429,20 +425,20 @@ export default function LandingPage() {
                       <circle cx="15" cy="15" r="15" fill="#2DB46A"/>
                       <path d="M18.0797 17.623L17.6782 18.0227C17.6782 18.0227 16.7226 18.9721 14.1152 16.3798C11.5079 13.7874 12.4634 12.838 12.4634 12.838L12.7158 12.5856C13.3396 11.9662 13.3987 10.9709 12.8543 10.2438L11.7426 8.75881C11.0684 7.8588 9.76695 7.73969 8.99489 8.50734L7.60958 9.88382C7.22752 10.265 6.97164 10.7574 7.00252 11.3044C7.08193 12.7047 7.71547 15.7162 11.2484 19.2298C14.9958 22.9551 18.512 23.1033 19.9494 22.9692C20.4047 22.9269 20.8 22.6957 21.1185 22.378L22.3715 21.1321C23.2185 20.2913 22.9803 18.8486 21.8968 18.2601L20.2115 17.3433C19.5003 16.9568 18.6356 17.0706 18.0797 17.623Z" fill="white"/>
                     </svg>
-                    <div>+62 812 2092 2920</div>
+                    <div>082227207774</div>
                   </div>
                   <div className="flex items-center space-x-2 font-[700] text-[#626262]">
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <circle cx="15" cy="15" r="15" fill="#2DB46A"/>
                       <path d="M20.5 9H8.5C7.675 9 7.0075 9.675 7.0075 10.5L7 19.5C7 20.325 7.675 21 8.5 21H20.5C21.325 21 22 20.325 22 19.5V10.5C22 9.675 21.325 9 20.5 9ZM20.5 12L14.5 15.75L8.5 12V10.5L14.5 14.25L20.5 10.5V12Z" fill="white"/>
                     </svg>
-                    <div>email@agronify.com</div>
+                    <div>contact@agronify.com</div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="text-center mt-12 pb-2 text-[#626262] font-bold">Copyrigt © <span className="text-[#2DB46A]">2023</span> Agronify. All right reserved</div>
+          <div className="text-center mt-12 pb-2 text-[#626262] font-bold">Copyright © <span className="text-[#2DB46A]">2023</span> Agronify. All right reserved</div>
         </div>
       </div>
     </>
