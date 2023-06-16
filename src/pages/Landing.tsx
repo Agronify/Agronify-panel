@@ -272,12 +272,16 @@ export default function LandingPage() {
               background: 'linear-gradient(153.27deg, #92FF6B -27.07%, #059669 106.97%)'
             }}>
               <div className="flex max-w-7xl w-full mx-auto space-x-12">
-                <iframe src="https://www.youtube.com/embed/dNUQTGY5Mw0" className="h-[420px] my-auto flex-1" title="A YouTube video" frameBorder="0"></iframe>
+                <iframe src="https://www.youtube.com/embed/TQSJ7QGkBJ0" className="h-[420px] my-auto flex-1" title="A YouTube video" frameBorder="0"></iframe>
                 <div className="flex flex-col flex-1 my-auto h-[420px]">
                   <div className="text-[48px] text-white">Demo Aplikasi</div>
                   <div className="text-[18px] text-white">Agronify, platform inovatif yang dirancang khusus untuk petani modern. Kami berkomitmen untuk menghadirkan solusi teknologi yang mempermudah pekerjaan petani, meningkatkan efisiensi pertanian, dan mendorong pertumbuhan ekonomi di sektor pertanian. Dengan fitur-fitur canggih seperti Prakiraan Cuaca AgroWeather, Informasi Pengetahuan Dasar AgroEdu, dan Identifikasi Penyakit serta Identifikasi Kematangan Buah AgroScan</div>
                   <div className="mt-auto">
-                    <button className="bg-white border-none px-4 py-2 rounded-md text-[#109E69] font-bold text-[18px] mb-2">Tonton Video</button>
+                    <button className="bg-white border-none px-4 py-2 rounded-md text-[#109E69] font-bold text-[18px] mb-2 cursor-pointer"
+                      onClick={() => {
+                        window.open('https://youtu.be/TQSJ7QGkBJ0', '_blank')
+                      }}
+                    >Tonton Video</button>
                   </div>
                 </div>
               </div>
