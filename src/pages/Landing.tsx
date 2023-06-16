@@ -379,10 +379,9 @@ export default function LandingPage() {
           <div className="flex w-2/3 mx-auto">
             <div className="w-2/3">
               <div className="flex items-center">
-                <img src="/logo.png" alt="" className="w-[50px] h-[50px]"/>
-                <div className="text-[#2DB46A] text-[28px] font-bold">Agronify</div>
+                <img src="/landing/logo-wide.png" alt="" className="h-[50px]"/>
               </div>
-              <div className="text-[#626262] font-[700]">Agronify adalah solusi lengkap untuk memajukan pertanian Anda. Dengan teknologi terbaru dan fitur inovatif, kami membantu petani meningkatkan produktivitas mereka,</div>
+              <div className="text-[#626262] font-[700]">Agronify adalah solusi lengkap untuk memajukan pertanian Anda. Dengan teknologi terbaru dan fitur inovatif, kami membantu petani meningkatkan produktivitas mereka.</div>
             </div>
             <div className="flex w-full space-x-24 mx-12">
               <div className="flex flex-col">
