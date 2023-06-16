@@ -11,6 +11,7 @@ This project is build with the following tech stack and libraries:
 
 # How to run
 1. Clone this repository
-2. Run `yarn install` to install all dependencies
-3. Run `npx prisma generate` to generate prisma client
-4. Run `yarn start` to start the development server
+2. Change VITE_API_URL endpoint in .env to your backend url (Agronify-Api)
+3. Run `yarn install` to install all dependencies
+4. Run `npx prisma generate` to generate prisma client
+5. Run `yarn start` to start the development server
