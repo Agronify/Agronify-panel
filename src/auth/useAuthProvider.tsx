@@ -24,6 +24,33 @@ const useAuthProvider = (): IUseAuthProvider => {
   const [loginApi, {}] = useLoginMutation();
   const [logoutApi, {}] = useLogoutMutation();
 
+  const check = function (){
+    fetch(import.meta.env.VITE_API_URL+"/auth/check").then((response)=>{
+        if (response.status === 200){
+            response.json().then((data)=>{
+                authDispatch(setUser(data))
+                authDispatch(setIsLoading(false))
+            })
+        } else {
+            authDispatch(setUser(null))
+            authDispatch(setIsLoading(false))
+        }
+    }).catch(()=>{
+        authDispatch(setUser(null))
+        authDispatch(setIsLoading(false))
+    })
+  } 
+  useEffect(()=>{
+      check()
+      if (!window.authChecker){
+          window.authChecker = setInterval(()=>{
+              if(authSelector.user){
+                  check()
+              }
+          }, 5000)
+      }
+    },[]);
+
   const login = async (
     email: string,
     password: string
