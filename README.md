@@ -15,3 +15,6 @@ This project is build with the following tech stack and libraries:
 3. Run `yarn install` to install all dependencies
 4. Run `npx prisma generate` to generate prisma client
 5. Run `yarn start` to start the development server
+6. Login in `localhost:3000/login` with the credentials below:
+    - Email: `admin@agronify.com`
+    - Password: `admin123`
