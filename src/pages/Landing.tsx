@@ -436,7 +436,7 @@ export default function LandingPage() {
                       <circle cx="15" cy="15" r="15" fill="#2DB46A"/>
                       <path d="M20.5 9H8.5C7.675 9 7.0075 9.675 7.0075 10.5L7 19.5C7 20.325 7.675 21 8.5 21H20.5C21.325 21 22 20.325 22 19.5V10.5C22 9.675 21.325 9 20.5 9ZM20.5 12L14.5 15.75L8.5 12V10.5L14.5 14.25L20.5 10.5V12Z" fill="white"/>
                     </svg>
-                    <div>email@agronify.com</div>
+                    <div>contact@agronify.com</div>
                   </div>
                 </div>
               </div>
