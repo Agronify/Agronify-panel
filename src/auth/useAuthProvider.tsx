@@ -25,7 +25,7 @@ const useAuthProvider = (): IUseAuthProvider => {
   const [logoutApi, {}] = useLogoutMutation();
 
   const check = function (){
-    fetch(import.meta.env.VITE_API_URL+"/auth/check").then((response)=>{
+    fetch(import.meta.env.VITE_API_URL+"/auth/check",{credentials: 'include'}).then((response)=>{
         if (response.status === 200){
             response.json().then((data)=>{
                 authDispatch(setUser(data))
