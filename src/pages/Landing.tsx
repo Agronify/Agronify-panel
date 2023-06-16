@@ -2,7 +2,7 @@ import { ChevronLeftRounded, ChevronRightRounded } from "@mui/icons-material";
 import { useState } from "react";
 
 export default function LandingPage() {
-  const screenshots = ["ss1.png", "ss2.png", "ss3.png", "ss3.png"]
+  const screenshots = ["ss1.png", "ss2.png", "ss3.png", "ss4.png"]
   const [currentScreenshot, setCurrentScreenshot] = useState(1)
   return (
     <>
@@ -42,7 +42,7 @@ export default function LandingPage() {
           <div className="flex  mt-24 max-w-7xl mx-auto ">
             <div className="flex flex-col w-2/3">
               <div className="text-[54px] font-[700]">
-                Lorem ipsum dolor sit amet. <br />A cursus vestibulum.
+              Solusi Inovatif untuk Menuju Petani Modern
               </div>
               <div className="text-[24px] w-4/5 text-[#626262] mt-[30px]">
                 Agronify adalah solusi lengkap untuk memajukan pertanian Anda.
@@ -280,7 +280,7 @@ export default function LandingPage() {
                   <div className="text-[48px] text-white">Demo Aplikasi</div>
                   <div className="text-[18px] text-white">Agronify, platform inovatif yang dirancang khusus untuk petani modern. Kami berkomitmen untuk menghadirkan solusi teknologi yang mempermudah pekerjaan petani, meningkatkan efisiensi pertanian, dan mendorong pertumbuhan ekonomi di sektor pertanian. Dengan fitur-fitur canggih seperti Prakiraan Cuaca AgroWeather, Informasi Pengetahuan Dasar AgroEdu, dan Identifikasi Penyakit serta Identifikasi Kematangan Buah AgroScan</div>
                   <div className="mt-auto">
-                    <button className="bg-white border-none px-4 py-2 rounded-md text-[#109E69] font-bold text-[18px] mb-2">Lorem Ipsum</button>
+                    <button className="bg-white border-none px-4 py-2 rounded-md text-[#109E69] font-bold text-[18px] mb-2">Tonton Video</button>
                   </div>
                 </div>
               </div>
@@ -331,33 +331,33 @@ export default function LandingPage() {
           <div className="w-full text-center text-[18px]">Bersama kami, tingkatkan hasil dan efisiensi pertanian Anda.</div>
           <div className="flex w-full max-w-7xl mx-auto space-x-3 mt-24">
             <div className="flex flex-col">
-              <img src="/landing/pp.png" alt="" className="w-[200px] h-[200px] mx-auto mt-12"/>
-              <div className="text-center mt-4 font-bold text-[22px]">Muhammad Dafa Ardiansyah</div>
-              <div className="text-center">Machine Learning</div>
-            </div>
-            <div className="flex flex-col">
-              <img src="/landing/pp.png" alt="" className="w-[200px] h-[200px] mx-auto mt-12"/>
+              <img src="/landing/people/rais.jpg" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
               <div className="text-center mt-4 font-bold text-[22px]">Rais Ilham Nusantara</div>
               <div className="text-center">Machine Learning</div>
             </div>
             <div className="flex flex-col">
-              <img src="/landing/pp.png" alt="" className="w-[200px] h-[200px] mx-auto mt-12"/>
+              <img src="/landing/people/dafa.jpg" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
+              <div className="text-center mt-4 font-bold text-[22px]">Muhammad Dafa Ardiansyah</div>
+              <div className="text-center">Machine Learning</div>
+            </div>
+            <div className="flex flex-col">
+              <img src="/landing/people/sarah.jpg" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
               <div className="text-center mt-4 font-bold text-[22px]">Sarah Alissa<br/>Putri</div>
               <div className="text-center">Machine Learning</div>
             </div>
             <div className="flex flex-col">
-              <img src="/landing/pp.png" alt="" className="w-[200px] h-[200px] mx-auto mt-12"/>
+              <img src="/landing/people/maul.jpg" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
+              <div className="text-center mt-4 font-bold text-[22px]">Maulidya Firdausy Al Fitri</div>
+              <div className="text-center">Cloud Computing</div>
+            </div>
+            <div className="flex flex-col">
+              <img src="/landing/people/fatur.jpg" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
               <div className="text-center mt-4 font-bold text-[22px]">Muhammad Fathurrahman</div>
               <div className="text-center">Mobile Development</div>
             </div>
             <div className="flex flex-col">
-              <img src="/landing/pp.png" alt="" className="w-[200px] h-[200px] mx-auto mt-12"/>
+              <img src="/landing/people/eko.jpg" alt="" className="w-[200px] rounded-full mx-auto mt-12"/>
               <div className="text-center mt-4 font-bold text-[22px]">Muhammad Eko Prasetyo</div>
-              <div className="text-center">Cloud Computing</div>
-            </div>
-            <div className="flex flex-col">
-              <img src="/landing/pp.png" alt="" className="w-[200px] h-[200px] mx-auto mt-12"/>
-              <div className="text-center mt-4 font-bold text-[22px]">Maulidya Firdausy Al Fitri</div>
               <div className="text-center">Cloud Computing</div>
             </div>
           </div>
@@ -422,7 +422,7 @@ export default function LandingPage() {
                       <circle cx="15" cy="15" r="15" fill="#2DB46A"/>
                       <path d="M15.25 15.125C14.7527 15.125 14.2758 14.9275 13.9242 14.5758C13.5725 14.2242 13.375 13.7473 13.375 13.25C13.375 12.7527 13.5725 12.2758 13.9242 11.9242C14.2758 11.5725 14.7527 11.375 15.25 11.375C15.7473 11.375 16.2242 11.5725 16.5758 11.9242C16.9275 12.2758 17.125 12.7527 17.125 13.25C17.125 13.4962 17.0765 13.74 16.9823 13.9675C16.888 14.195 16.7499 14.4017 16.5758 14.5758C16.4017 14.7499 16.195 14.888 15.9675 14.9823C15.74 15.0765 15.4962 15.125 15.25 15.125ZM15.25 8C13.8576 8 12.5223 8.55312 11.5377 9.53769C10.5531 10.5223 10 11.8576 10 13.25C10 17.1875 15.25 23 15.25 23C15.25 23 20.5 17.1875 20.5 13.25C20.5 11.8576 19.9469 10.5223 18.9623 9.53769C17.9777 8.55312 16.6424 8 15.25 8Z" fill="white"/>
                     </svg>
-                    <div>Lorem ipsum dolor sit amet consectetur. Quis ac amet mauris est arcu.</div>
+                    <div>Surabaya</div>
                   </div>
                   <div className="flex items-center space-x-2 font-[700] text-[#626262]">
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
