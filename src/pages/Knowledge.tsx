@@ -55,6 +55,15 @@ export default function KnowledgePage() {
       field: "content",
       headerName: "Content",
       width: 200,
+      renderCell: (params) => {
+        return (
+          <div
+          className="line-clamp-5"
+          >
+            {params.row.content}
+          </div>
+        );
+      }
     },
     {
       field: "id",

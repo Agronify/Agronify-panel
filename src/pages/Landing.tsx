@@ -1,7 +1,12 @@
+import { ChevronLeftRounded, ChevronRightRounded } from "@mui/icons-material";
+import { useState } from "react";
+
 export default function LandingPage() {
+  const screenshots = ["ss1.png", "ss2.png", "ss3.png", "ss3.png"]
+  const [currentScreenshot, setCurrentScreenshot] = useState(1)
   return (
     <>
-      <div className="w-full h-screen min-h-screen">
+      <div className="w-full min-h-screen">
         <div className="flex flex-col">
           <div className="shadow h-15 w-full">
             <div className="flex flex-col max-w-7xl mx-auto">
@@ -25,50 +30,48 @@ export default function LandingPage() {
                   <button className="font-semibold text-[#626262] bg-transparent py-3 px-4 border-0 cursor-pointer text-[16px]">
                     Kontak
                   </button>
-                  <button className="font-semibold text-white bg-[#2DB46A] py-3 px-4 text-[16px] border-0 rounded-md">
+                  {/* <button className="font-semibold text-white bg-[#2DB46A] py-3 px-4 text-[16px] border-0 rounded-md">
                     Masuk
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>
           </div>
-          <div className="flex flex-col w-full mt-24 max-w-7xl mx-auto">
-            <div className="flex">
-              <div className="flex flex-col w-2/3">
-                <div className="text-[54px] font-[700]">
-                  Lorem ipsum dolor sit amet. <br />A cursus vestibulum.
-                </div>
-                <div className="text-[24px] w-4/5 text-[#626262] mt-[30px]">
-                  Agronify adalah solusi lengkap untuk memajukan pertanian Anda.
-                  Dengan teknologi terbaru dan fitur inovatif, kami membantu
-                  petani meningkatkan produktivitas mereka,
-                </div>
+        </div>
+        <div className="flex flex-col w-full h-screen">
+          <div className="flex  mt-24 max-w-7xl mx-auto ">
+            <div className="flex flex-col w-2/3">
+              <div className="text-[54px] font-[700]">
+                Lorem ipsum dolor sit amet. <br />A cursus vestibulum.
               </div>
-              <img
-                src="/landing/image1.png"
-                className="ml-auto lg:w-[400px] md:w-[300px] w-[250px]"
-              />
+              <div className="text-[24px] w-4/5 text-[#626262] mt-[30px]">
+                Agronify adalah solusi lengkap untuk memajukan pertanian Anda.
+                Dengan teknologi terbaru dan fitur inovatif, kami membantu
+                petani meningkatkan produktivitas mereka,
+              </div>
             </div>
+            <img
+              src="/landing/image1.png"
+              className="ml-auto lg:w-[400px] md:w-[300px] w-[250px]"
+            />
+          </div>
+          <div>
+            <img src="/landing/bottom-vector.png" className="w-full mt-16" />
           </div>
         </div>
-        <div>
-          <img src="/landing/bottom-vector.png" className="w-full mt-16" />
-        </div>
-        <div className="flex flex-col w-full mt-6">
+        <div className="flex flex-col w-full h-screen">
           <div className="flex flex-col max-w-4xl mx-auto text-center">
             <div className="text-[48px] font-bold">Fitur Aplikasi</div>
             <div className="text-[20px] text-[#626262]">
-              Lorem ipsum dolor sit amet consectetur. Quis ac amet mauris est
-              arcu. Orci feugiat lectus sit vel consectetur non. Sollicitudin
-              sed ac et malesuada.
+            Aplikasi dengan fitur inovatif untuk petani modern, solusi teknologi yang mempermudah pekerjaan, meningkatkan efisiensi, dan mendorong pertumbuhan ekonomi pertanian.
             </div>
           </div>
-          <div className="flex max-w-[80%] mx-auto mt-[80px] pb-16">
+          <div className="flex max-w-[80%] mx-auto h-screen">
             <div className="flex-1 flex flex-col mr-[64px] justify-around">
               <div className="flex w-full space-x-8">
                 <div className="flex-1 flex flex-col">
                   <div className="text-[24px] font-bold text-right -mt-2">AgroWeather</div>
-                  <div className="text-right">
+                  <div className="text-right text-[#626262]">
                     Menyediakan informasi cuaca terkini dan prakiraan jangka pendek untuk membantu petani mengambil keputusan yang tepat dalam menjalankan aktivitas pertanian mereka.
                   </div>
                 </div>
@@ -87,7 +90,7 @@ export default function LandingPage() {
               <div className="flex w-full space-x-8">
                 <div className="flex-1 flex flex-col">
                   <div className="text-[24px] font-bold text-right -mt-2">AgroEdu</div>
-                  <div className="text-right">
+                  <div className="text-right text-[#626262]">
                     Menyajikan informasi dan pengetahuan tentang tanaman, seperti pengetahuan dasar jenis-jenis tanaman dan pengetahuan tentang jenis-jenis penyakit tanaman.
                   </div>
                 </div>
@@ -103,7 +106,7 @@ export default function LandingPage() {
               <div className="flex w-full space-x-8">
                 <div className="flex-1 flex flex-col">
                   <div className="text-[24px] font-bold text-right -mt-2">AgroScan</div>
-                  <div className="text-right">
+                  <div className="text-right text-[#626262]">
                     Unggah foto tanaman atau buah Anda untuk mengidentifikasi penyakit dan kematangan buah, serta terima solusi yang sesuai.
                   </div>
                 </div>
@@ -116,7 +119,7 @@ export default function LandingPage() {
               <div className="flex w-full space-x-8">
                 <div className="flex-1 flex flex-col">
                   <div className="text-[24px] font-bold text-right -mt-2">AgroHub</div>
-                  <div className="text-right">
+                  <div className="text-right text-[#626262]">
                     Diskusikan, tanya jawab, dan berbagi pengalaman dengan petani lain untuk memperluas jaringan, mendapatkan saran, dan belajar dari praktik terbaik.
                   </div>
                 </div>
@@ -133,7 +136,9 @@ export default function LandingPage() {
                 </svg>
               </div>
             </div>
-            <img src="/landing/image2.png" className="w-[320px]" />
+            <div className="my-auto">
+              <img src="/landing/image2.png" className="w-[360px]" />
+            </div>
             <div className="flex-1 flex flex-col ml-[64px] justify-around">
               <div className="flex w-full space-x-8">
                 <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -159,7 +164,7 @@ export default function LandingPage() {
                 </svg>
                 <div className="flex-1 flex flex-col">
                   <div className="text-[24px] font-bold -mt-2">AgroMart</div>
-                  <div className="">
+                  <div className="text-[#626262]">
                     Optimalkan distribusi pertanian. Petani dapat memamerkan, menegosiasikan, dan mendapatkan harga terbaik dan pembeli dapat mengakses produk berkualitas tinggi.
                   </div>
                 </div>
@@ -187,7 +192,7 @@ export default function LandingPage() {
                 </svg>
                 <div className="flex-1 flex flex-col">
                   <div className="text-[24px] font-bold -mt-2">AgroWork</div>
-                  <div className="">
+                  <div className="text-[#626262]">
                     Menyajikan informasi dan pengetahuan tentang tanaman, seperti pengetahuan dasar jenis-jenis tanaman dan pengetahuan tentang jenis-jenis penyakit tanaman.
                   </div>
                 </div>
@@ -227,7 +232,7 @@ export default function LandingPage() {
                 </svg>
                 <div className="flex-1 flex flex-col">
                   <div className="text-[24px] font-bold -mt-2">AgroPlan</div>
-                  <div className="">
+                  <div className="text-[#626262]">
                     Memberdayakan petani melalui alat dan pengetahuan penting, optimalkan produktivitas, dan pertumbuhan industri pertanian yang tangguh dan sejahtera.
                   </div>
                 </div>
@@ -257,13 +262,187 @@ export default function LandingPage() {
                 </svg>
                 <div className="flex-1 flex flex-col">
                   <div className="text-[24px] font-bold -mt-2">AgroFin</div>
-                  <div className="">
-                  Lacak pendapatan, pengeluaran, hitung biaya produksi, dan peroleh laporan keuangan terperinci untuk mengoptimalkan efisiensi dan profitabilitas usaha Anda.
+                  <div className="text-[#626262]">
+                    Lacak pendapatan, pengeluaran, biaya produksi, dan laporan keuangan terperinci untuk mengoptimalkan efisiensi dan profitabilitas usaha Anda.
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+        <div className="flex w-full h-screen">
+            <div className="flex h-[80%] w-full my-auto" style={{
+              background: 'linear-gradient(153.27deg, #92FF6B -27.07%, #059669 106.97%)'
+            }}>
+              <div className="flex max-w-7xl w-full mx-auto space-x-12">
+                <iframe src="https://www.youtube.com/embed/dNUQTGY5Mw0" className="h-[420px] my-auto flex-1" title="A YouTube video" frameBorder="0"></iframe>
+                <div className="flex flex-col flex-1 my-auto h-[420px]">
+                  <div className="text-[48px] text-white">Demo Aplikasi</div>
+                  <div className="text-[18px] text-white">Agronify, platform inovatif yang dirancang khusus untuk petani modern. Kami berkomitmen untuk menghadirkan solusi teknologi yang mempermudah pekerjaan petani, meningkatkan efisiensi pertanian, dan mendorong pertumbuhan ekonomi di sektor pertanian. Dengan fitur-fitur canggih seperti Prakiraan Cuaca AgroWeather, Informasi Pengetahuan Dasar AgroEdu, dan Identifikasi Penyakit serta Identifikasi Kematangan Buah AgroScan</div>
+                  <div className="mt-auto">
+                    <button className="bg-white border-none px-4 py-2 rounded-md text-[#109E69] font-bold text-[18px] mb-2">Lorem Ipsum</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div className="flex flex-col w-full h-screen">
+          <div className="mt-16 font-bold text-[48px] text-center w-full">Screenshot Aplikasi</div>
+          <div className="w-full text-center text-[18px]">Bergabunglah menjadi bagian dari Agromates dan jadilah bagian dari perubahan di dunia pertanian bersama Agronify.</div>
+          <div className="mt-12 mx-auto w-full flex">
+            <div className="mx-auto flex">
+              <div className={`mr-12 w-[80px] h-[80px] flex my-auto rounded-full bg-transparent hover:bg-[#2DB46A] border-[#2DB46A] border border-solid`} onClick={()=>{
+                if(currentScreenshot>0) setCurrentScreenshot(currentScreenshot-1)
+              }}>
+                <ChevronLeftRounded className="w-[72px] h-[72px] my-auto mx-auto text-[#2DB46A] hover:text-white"/>
+              </div>
+              {screenshots.map((screenshot, index) => {
+                if (index==3){
+                  return (
+                    <div className={`relative `+ (currentScreenshot !== index ? 'hidden' : '')}>
+                      <img src={`/landing/`+screenshot} alt="" className="h-[600px] "/>
+                      <div className="absolute w-full top-0 h-full flex" style={{
+                        background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.87) 0%, #FFFFFF 100%)'
+                      }}>
+                        <div className="my-auto mx-auto text-[40px] text-[#161616] w-2/3 text-center">Bersiaplah! Fitur baru sedang dalam pengembangan dan akan segera hadir</div>
+                      </div>
+                    </div>
+                  )
+                }
+                return <img src={`/landing/`+screenshot} className={`h-[600px] ` + (currentScreenshot !== index ? 'hidden' : '')} alt="" />
+              })}
+              <div className={`ml-12 w-[80px] h-[80px] flex my-auto rounded-full bg-transparent hover:bg-[#2DB46A] border-[#2DB46A] border border-solid`} onClick={()=>{
+                if(currentScreenshot<screenshots.length-1) setCurrentScreenshot(currentScreenshot+1)
+              }}>
+                <ChevronRightRounded className="w-[72px] h-[72px] my-auto mx-auto text-[#2DB46A] hover:text-white"/>
+              </div>
+            </div>
+          </div>
+          <div className="flex w-full space-x-6 mx-auto justify-center mt-12">
+            {screenshots.map((screenshot, index) => (
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="8" cy="8" r={currentScreenshot == index ? `8`:`7.5`} fill={currentScreenshot == index ? `#2DB46A`:`white`} stroke={currentScreenshot == index ? `#2DB46A`:`#33B86A`} onClick={() => setCurrentScreenshot(index)} />
+              </svg>
+            ))}
+          </div>
+        </div>
+        <div className="flex flex-col w-full">
+          <div className="mt-20 font-bold text-[48px] text-center w-full">Ini kami, Agromates.</div>
+          <div className="w-full text-center text-[18px]">Bersama kami, tingkatkan hasil dan efisiensi pertanian Anda.</div>
+          <div className="flex w-full max-w-7xl mx-auto space-x-3 mt-24">
+            <div className="flex flex-col">
+              <img src="/landing/pp.png" alt="" className="w-[200px] h-[200px] mx-auto mt-12"/>
+              <div className="text-center mt-4 font-bold text-[22px]">Muhammad Dafa Ardiansyah</div>
+              <div className="text-center">Machine Learning</div>
+            </div>
+            <div className="flex flex-col">
+              <img src="/landing/pp.png" alt="" className="w-[200px] h-[200px] mx-auto mt-12"/>
+              <div className="text-center mt-4 font-bold text-[22px]">Rais Ilham Nusantara</div>
+              <div className="text-center">Machine Learning</div>
+            </div>
+            <div className="flex flex-col">
+              <img src="/landing/pp.png" alt="" className="w-[200px] h-[200px] mx-auto mt-12"/>
+              <div className="text-center mt-4 font-bold text-[22px]">Sarah Alissa<br/>Putri</div>
+              <div className="text-center">Machine Learning</div>
+            </div>
+            <div className="flex flex-col">
+              <img src="/landing/pp.png" alt="" className="w-[200px] h-[200px] mx-auto mt-12"/>
+              <div className="text-center mt-4 font-bold text-[22px]">Muhammad Fathurrahman</div>
+              <div className="text-center">Mobile Development</div>
+            </div>
+            <div className="flex flex-col">
+              <img src="/landing/pp.png" alt="" className="w-[200px] h-[200px] mx-auto mt-12"/>
+              <div className="text-center mt-4 font-bold text-[22px]">Muhammad Eko Prasetyo</div>
+              <div className="text-center">Cloud Computing</div>
+            </div>
+            <div className="flex flex-col">
+              <img src="/landing/pp.png" alt="" className="w-[200px] h-[200px] mx-auto mt-12"/>
+              <div className="text-center mt-4 font-bold text-[22px]">Maulidya Firdausy Al Fitri</div>
+              <div className="text-center">Cloud Computing</div>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col w-full">
+          <div className="flex flex-col translate-y-1/2 shadow-lg w-2/3 mx-auto py-12 rounded-3xl bg-white">
+            <div className="text-[40px] font-bold text-center">Didukung Oleh</div>
+            <div className="flex justify-around items-center">
+              <div>
+                <img src="/landing/google.png" alt="" className="w-[200px] mx-auto mt-12"/>
+              </div>
+              <div>
+                <img src="/landing/bangkit.png" alt="" className="w-[200px] mx-auto mt-12"/>
+              </div>
+              <div>
+                <img src="/landing/kampus.png" alt="" className="w-[200px] mx-auto mt-12"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="bg-[#EBF8F4] flex flex-col pt-[220px]">
+          <div className="flex w-2/3 mx-auto">
+            <div className="w-2/3">
+              <div className="flex items-center">
+                <img src="/logo.png" alt="" className="w-[50px] h-[50px]"/>
+                <div className="text-[#2DB46A] text-[28px] font-bold">Agronify</div>
+              </div>
+              <div className="text-[#626262] font-[700]">Agronify adalah solusi lengkap untuk memajukan pertanian Anda. Dengan teknologi terbaru dan fitur inovatif, kami membantu petani meningkatkan produktivitas mereka,</div>
+            </div>
+            <div className="flex w-full space-x-24 mx-12">
+              <div className="flex flex-col">
+                <div className="font-bold">Ikuti Kami</div>
+                <div className="flex flex-col space-y-2 mt-6">
+                  <div className="flex items-center space-x-2 font-[700] text-[#626262]">
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="15" cy="15" r="15" fill="#2DB46A"/>
+                      <path d="M15.2712 8.00092C15.8184 7.99882 16.3657 8.00432 16.9128 8.01742L17.0583 8.02267C17.2263 8.02867 17.3921 8.03617 17.5923 8.04517C18.3903 8.08267 18.9348 8.20867 19.4125 8.39391C19.9075 8.5844 20.3245 8.84239 20.7415 9.25938C21.1227 9.63407 21.4178 10.0873 21.6062 10.5876C21.7914 11.0653 21.9174 11.6105 21.9549 12.4085C21.9639 12.608 21.9714 12.7745 21.9774 12.9425L21.9819 13.088C21.9952 13.6349 22.001 14.1819 21.9992 14.7289L21.9999 15.2884V16.2709C22.0018 16.8182 21.996 17.3655 21.9827 17.9126L21.9782 18.0581C21.9722 18.2261 21.9647 18.3918 21.9557 18.5921C21.9182 19.39 21.7907 19.9345 21.6062 20.4123C21.4184 20.9131 21.1233 21.3667 20.7415 21.7412C20.3664 22.1224 19.913 22.4175 19.4125 22.6059C18.9348 22.7912 18.3903 22.9172 17.5923 22.9547C17.3921 22.9637 17.2263 22.9712 17.0583 22.9772L16.9128 22.9817C16.3657 22.995 15.8184 23.0007 15.2712 22.9989L14.7117 22.9997H13.73C13.1827 23.0015 12.6354 22.9958 12.0883 22.9824L11.9428 22.9779C11.7647 22.9715 11.5867 22.964 11.4088 22.9554C10.6108 22.9179 10.0663 22.7904 9.58784 22.6059C9.08737 22.4179 8.63406 22.1228 8.25964 21.7412C7.87794 21.3664 7.58258 20.9129 7.39417 20.4123C7.20893 19.9345 7.08293 19.39 7.04543 18.5921C7.03708 18.4141 7.02958 18.2361 7.02293 18.0581L7.01918 17.9126C7.00536 17.3655 6.9991 16.8182 7.00043 16.2709V14.7289C6.99834 14.1819 7.00384 13.6349 7.01693 13.088L7.02218 12.9425C7.02818 12.7745 7.03568 12.608 7.04468 12.4085C7.08218 11.6098 7.20818 11.0661 7.39342 10.5876C7.58194 10.0871 7.87788 9.63395 8.26039 9.26013C8.63455 8.87821 9.08758 8.58258 9.58784 8.39391C10.0663 8.20867 10.6101 8.08267 11.4088 8.04517L11.9428 8.02267L12.0883 8.01892C12.6351 8.0051 13.1822 7.99885 13.7292 8.00017L15.2712 8.00092ZM14.5002 11.7508C14.0033 11.7438 13.51 11.8356 13.049 12.0208C12.5879 12.2061 12.1682 12.4812 11.8144 12.83C11.4606 13.1789 11.1796 13.5946 10.9878 14.053C10.796 14.5114 10.6973 15.0034 10.6973 15.5003C10.6973 15.9972 10.796 16.4891 10.9878 16.9475C11.1796 17.406 11.4606 17.8217 11.8144 18.1705C12.1682 18.5194 12.5879 18.7945 13.049 18.9797C13.51 19.165 14.0033 19.2568 14.5002 19.2498C15.4947 19.2498 16.4485 18.8547 17.1517 18.1515C17.855 17.4482 18.25 16.4944 18.25 15.4999C18.25 14.5054 17.855 13.5516 17.1517 12.8484C16.4485 12.1451 15.4947 11.7508 14.5002 11.7508ZM14.5002 13.2507C14.799 13.2452 15.096 13.2993 15.3737 13.4099C15.6515 13.5204 15.9044 13.6852 16.1177 13.8946C16.331 14.104 16.5005 14.3538 16.6162 14.6295C16.7319 14.9051 16.7915 15.201 16.7915 15.4999C16.7916 15.7988 16.7321 16.0948 16.6165 16.3704C16.5009 16.6461 16.3315 16.8959 16.1182 17.1054C15.905 17.3149 15.6521 17.4798 15.3744 17.5904C15.0968 17.701 14.7998 17.7552 14.5009 17.7498C13.9042 17.7498 13.3319 17.5128 12.91 17.0909C12.488 16.6689 12.251 16.0966 12.251 15.4999C12.251 14.9032 12.488 14.3309 12.91 13.909C13.3319 13.487 13.9042 13.25 14.5009 13.25L14.5002 13.2507ZM18.4375 10.6258C18.1956 10.6355 17.9668 10.7384 17.799 10.9131C17.6313 11.0877 17.5376 11.3204 17.5376 11.5626C17.5376 11.8047 17.6313 12.0374 17.799 12.2121C17.9668 12.3867 18.1956 12.4896 18.4375 12.4993C18.6862 12.4993 18.9246 12.4005 19.1004 12.2247C19.2762 12.0489 19.375 11.8104 19.375 11.5618C19.375 11.3132 19.2762 11.0747 19.1004 10.8989C18.9246 10.7231 18.6862 10.6243 18.4375 10.6243V10.6258Z" fill="white"/>
+                    </svg>
+                    <div>Instagram</div>
+                  </div>
+                  <div className="flex items-center space-x-2 font-[700] text-[#626262]">
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="15" cy="15" r="15" fill="#2DB46A"/>
+                      <path d="M11.1478 8.66741C11.1476 9.10941 10.9816 9.53322 10.6862 9.84561C10.3909 10.158 9.99052 10.3334 9.5731 10.3331C9.15568 10.3329 8.75544 10.1571 8.46043 9.84443C8.16541 9.53173 7.99979 9.10774 8 8.66574C8.00021 8.22374 8.16623 7.79993 8.46154 7.48754C8.75685 7.17515 9.15726 6.99978 9.57468 7C9.9921 7.00022 10.3923 7.17602 10.6874 7.48872C10.9824 7.80142 11.148 8.2254 11.1478 8.66741ZM11.195 11.5672H8.04722V22H11.195V11.5672ZM16.1685 11.5672H13.0364V22H16.137V16.5253C16.137 13.4755 19.8907 13.1922 19.8907 16.5253V22H22.9992V15.392C22.9992 10.2507 17.4433 10.4423 16.137 12.9672L16.1685 11.5672Z" fill="white"/>
+                    </svg>
+                    <div>LinkedIn</div>
+                  </div>
+                  <div className="flex items-center space-x-2 font-[700] text-[#626262]">
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="15" cy="15" r="15" fill="#2DB46A"/>
+                      <path d="M12.8571 17.5714L17.3057 15L12.8571 12.4286V17.5714ZM22.7657 10.86C22.8771 11.2629 22.9543 11.8029 23.0057 12.4886C23.0657 13.1743 23.0914 13.7657 23.0914 14.28L23.1429 15C23.1429 16.8771 23.0057 18.2571 22.7657 19.14C22.5514 19.9114 22.0543 20.4086 21.2829 20.6229C20.88 20.7343 20.1429 20.8114 19.0114 20.8629C17.8971 20.9229 16.8771 20.9486 15.9343 20.9486L14.5714 21C10.98 21 8.74286 20.8629 7.86 20.6229C7.08857 20.4086 6.59143 19.9114 6.37714 19.14C6.26571 18.7371 6.18857 18.1971 6.13714 17.5114C6.07714 16.8257 6.05143 16.2343 6.05143 15.72L6 15C6 13.1229 6.13714 11.7429 6.37714 10.86C6.59143 10.0886 7.08857 9.59143 7.86 9.37714C8.26286 9.26571 9 9.18857 10.1314 9.13714C11.2457 9.07714 12.2657 9.05143 13.2086 9.05143L14.5714 9C18.1629 9 20.4 9.13714 21.2829 9.37714C22.0543 9.59143 22.5514 10.0886 22.7657 10.86Z" fill="white"/>
+                    </svg>
+                    <div>Youtube</div>
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col">
+              <div className="font-bold">Kontak</div>
+                <div className="flex flex-col space-y-2 mt-6">
+                  <div className="flex items-center space-x-2 font-[700] text-[#626262]">
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="15" cy="15" r="15" fill="#2DB46A"/>
+                      <path d="M15.25 15.125C14.7527 15.125 14.2758 14.9275 13.9242 14.5758C13.5725 14.2242 13.375 13.7473 13.375 13.25C13.375 12.7527 13.5725 12.2758 13.9242 11.9242C14.2758 11.5725 14.7527 11.375 15.25 11.375C15.7473 11.375 16.2242 11.5725 16.5758 11.9242C16.9275 12.2758 17.125 12.7527 17.125 13.25C17.125 13.4962 17.0765 13.74 16.9823 13.9675C16.888 14.195 16.7499 14.4017 16.5758 14.5758C16.4017 14.7499 16.195 14.888 15.9675 14.9823C15.74 15.0765 15.4962 15.125 15.25 15.125ZM15.25 8C13.8576 8 12.5223 8.55312 11.5377 9.53769C10.5531 10.5223 10 11.8576 10 13.25C10 17.1875 15.25 23 15.25 23C15.25 23 20.5 17.1875 20.5 13.25C20.5 11.8576 19.9469 10.5223 18.9623 9.53769C17.9777 8.55312 16.6424 8 15.25 8Z" fill="white"/>
+                    </svg>
+                    <div>Lorem ipsum dolor sit amet consectetur. Quis ac amet mauris est arcu.</div>
+                  </div>
+                  <div className="flex items-center space-x-2 font-[700] text-[#626262]">
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="15" cy="15" r="15" fill="#2DB46A"/>
+                      <path d="M18.0797 17.623L17.6782 18.0227C17.6782 18.0227 16.7226 18.9721 14.1152 16.3798C11.5079 13.7874 12.4634 12.838 12.4634 12.838L12.7158 12.5856C13.3396 11.9662 13.3987 10.9709 12.8543 10.2438L11.7426 8.75881C11.0684 7.8588 9.76695 7.73969 8.99489 8.50734L7.60958 9.88382C7.22752 10.265 6.97164 10.7574 7.00252 11.3044C7.08193 12.7047 7.71547 15.7162 11.2484 19.2298C14.9958 22.9551 18.512 23.1033 19.9494 22.9692C20.4047 22.9269 20.8 22.6957 21.1185 22.378L22.3715 21.1321C23.2185 20.2913 22.9803 18.8486 21.8968 18.2601L20.2115 17.3433C19.5003 16.9568 18.6356 17.0706 18.0797 17.623Z" fill="white"/>
+                    </svg>
+                    <div>+62 812 2092 2920</div>
+                  </div>
+                  <div className="flex items-center space-x-2 font-[700] text-[#626262]">
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="15" cy="15" r="15" fill="#2DB46A"/>
+                      <path d="M20.5 9H8.5C7.675 9 7.0075 9.675 7.0075 10.5L7 19.5C7 20.325 7.675 21 8.5 21H20.5C21.325 21 22 20.325 22 19.5V10.5C22 9.675 21.325 9 20.5 9ZM20.5 12L14.5 15.75L8.5 12V10.5L14.5 14.25L20.5 10.5V12Z" fill="white"/>
+                    </svg>
+                    <div>email@agronify.com</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="text-center mt-12 pb-2 text-[#626262] font-bold">Copyrigt © <span className="text-[#2DB46A]">2023</span> Agronify. All right reserved</div>
         </div>
       </div>
     </>

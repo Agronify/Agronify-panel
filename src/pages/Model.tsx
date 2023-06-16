@@ -205,18 +205,28 @@ export default function ModelPage() {
             fullWidth
             onChange={(e) => {
               e.preventDefault();
+              console.log(e.target.value);
               handleUpdateClass(e.target.value as number, params.row);
             }}
-            value={(params.row.disease as any)?.id || 0}
+            value={selectedModel?.type == "ripeness" ? (params.row.ripe ? 1:0) : ((params.row.disease as any)?.id || 0)}
           >
-            <MenuItem value={0}>Healthy</MenuItem>
-            {diseasesData?.map((disease) => {
-              return (
-                <MenuItem key={disease.id} value={disease.id}>
-                  {disease.name}
-                </MenuItem>
-              );
-            })}
+            {selectedModel?.type === "disease" && (
+              <MenuItem value={0}>Healthy</MenuItem>
+            )}
+            {selectedModel?.type === "disease" && diseasesData?.map((disease) => {
+                return (
+                  <MenuItem key={disease.id} value={disease.id}>
+                    {disease.name}
+                  </MenuItem>
+                );
+              })}
+              {selectedModel?.type === "ripeness" && ["Unripe","Ripe"].map((disease, index) => {
+                return (
+                  <MenuItem key={index} value={index}>
+                    {disease}
+                  </MenuItem>
+                );
+              })}
           </Select>
         );
       },
@@ -227,6 +237,12 @@ export default function ModelPage() {
     diseaseId: number,
     modelClass: ModelClass
   ) => {
+    let ripe = false;
+    if(selectedModel?.type === "ripeness") {
+      console.log(diseaseId);
+      ripe = diseaseId === 0 ? false : true;
+      diseaseId = 0;
+    }
     await updateModelClass({
       modelId: selectedModel?.id as number,
       class: {
@@ -235,6 +251,7 @@ export default function ModelPage() {
         index: modelClass.index,
         model_id: modelClass.model_id,
         id: modelClass.id,
+        ripe,
       },
     }).unwrap();
     Swal.fire({
