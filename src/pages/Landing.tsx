@@ -11,10 +11,7 @@ export default function LandingPage() {
           <div className="shadow h-15 w-full">
             <div className="flex flex-col max-w-7xl mx-auto">
               <div className="flex items-center flex-1">
-                <img src="/logo.png" className="w-[60px] h-[60px]" />
-                <div className="text-[#2DB46A] text-[40px] font-[700]">
-                  Agronify
-                </div>
+                <img src="/landing/logo-wide.png" className="h-[60px]" />
                 <div className="flex-1 "></div>
                 {/*expand*/}
                 <div className="flex">
@@ -442,7 +439,7 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
-          <div className="text-center mt-12 pb-2 text-[#626262] font-bold">Copyrigt © <span className="text-[#2DB46A]">2023</span> Agronify. All right reserved</div>
+          <div className="text-center mt-12 pb-2 text-[#626262] font-bold">Copyright © <span className="text-[#2DB46A]">2023</span> Agronify. All right reserved</div>
         </div>
       </div>
     </>
